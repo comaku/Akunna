@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Akunna Ihesiulo | Entrepreneur & Technology Innovator</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+:root{
+--bg:#0b1020;--card:rgba(255,255,255,.08);--text:#eef2ff;--muted:#b6c2e1;--a:#6ee7ff;--b:#7c3aed;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:linear-gradient(135deg,#0b1020,#111936);color:var(--text);line-height:1.7}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:0 8%}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(80px);opacity:.35}
+.hero:before{width:320px;height:320px;background:#00d4ff;top:-80px;left:-80px;animation:f 12s infinite alternate}
+.hero:after{width:420px;height:420px;background:#7c3aed;right:-120px;bottom:-120px;animation:f 14s infinite alternate-reverse}
+@keyframes f{to{transform:translate(60px,40px) scale(1.2)}}
+nav{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:rgba(10,15,30,.55);backdrop-filter:blur(12px);z-index:99}
+.logo{font-size:2rem;font-weight:800;color:var(--a)}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{color:#fff;text-decoration:none;transition:.3s}
+nav a:hover{color:var(--a)}
+.hero-content{max-width:760px}
+h1{font-size:4rem;font-weight:800;background:linear-gradient(90deg,#fff,#6ee7ff,#7c3aed);-webkit-background-clip:text;color:transparent}
+h2{font-size:1.5rem;margin:12px 0}
+p{color:var(--muted)}
+.btn{display:inline-block;margin-top:30px;padding:15px 32px;border-radius:40px;background:linear-gradient(90deg,var(--a),var(--b));color:#fff;text-decoration:none;font-weight:700;transition:.3s}
+.btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(110,231,255,.3)}
+section{padding:100px 8%}
+section h2{text-align:center;font-size:2.3rem;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+article{background:var(--card);border:1px solid rgba(255,255,255,.1);padding:28px;border-radius:22px;backdrop-filter:blur(12px);transition:.35s}
+article:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+#skills ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;list-style:none}
+#skills li{background:var(--card);padding:18px;border-radius:15px;border-left:4px solid var(--a)}
+#vision,#contact{text-align:center}
+footer{text-align:center;padding:30px;border-top:1px solid rgba(255,255,255,.08);color:var(--muted)}
+@media(max-width:768px){
+nav{padding:15px 5%;flex-direction:column;gap:12px}
+nav ul{flex-wrap:wrap;justify-content:center;gap:16px}
+.hero{padding:0 5%;text-align:center}
+h1{font-size:2.7rem}
+h2{font-size:1.2rem}
+section{padding:70px 5%}
+}
+</style>
+</head>
+<body>
+<header class="hero" id="home">
+<nav>
+<div class="logo">AI</div>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#vision">Vision</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<div class="hero-content">
+<h1>Akunna Ihesiulo</h1>
+<h2>Entrepreneur • Software Developer • AI & IoT Innovator</h2>
+<p>Building technology that solves real-world African problems across Agriculture, Education, Healthcare, AI and Digital Commerce.</p>
+<a class="btn" href="#projects">Explore My Work</a>
+</div>
+</header>
+
+<section id="about">
+<h2>About Me</h2>
+<p>
+I am a passionate entrepreneur, software developer, and technology innovator who believes that great technology should solve real-world problems. Rather than building applications for the sake of technology, I focus on creating practical digital solutions that improve people's daily lives. My journey has allowed me to work on projects across Artificial Intelligence, AgriTech, EdTech, IoT, e-commerce, and business automation, each designed to address challenges faced by individuals, students, businesses, and communities. I enjoy turning ideas into functional products, learning new technologies, and continuously challenging myself to build solutions that create meaningful social and economic impact.
+</p>
+</section>
+
+<section id="projects">
+<h2>Featured Projects</h2>
+<div class="grid">
+<article><h3>Paletra</h3><p>AI recipe assistant helping users cook with available ingredients.</p></article>
+<article><h3>FarmMart</h3><p>Connecting farmers and consumers through technology.</p></article>
+<article><h3>QuizLite</h3><p>AI-powered learning and quiz platform.</p></article>
+<article><h3>CampusMart</h3><p>Marketplace designed for university communities.</p></article>
+<article><h3>Industrial Safety Wearable</h3><p>IoT solution monitoring gas, body temperature and heart rate.</p></article>
+<article><h3>Forex Assistant</h3><p>Trading assistant with analytics and automation.</p></article>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<ul>
+<li>HTML5 / CSS3 / JavaScript</li>
+<li>Python</li>
+<li>AI Integration</li>
+<li>Google Apps Script</li>
+<li>Firebase & Supabase</li>
+<li>REST APIs</li>
+<li>ESP8266 / Arduino / IoT</li>
+<li>Product Strategy</li>
+</ul>
+</section>
+
+<section id="vision">
+<h2>My Vision</h2>
+<p>
+My vision is to leverage technology, artificial intelligence, and innovation to build impactful products that transform everyday life across Africa. I aspire to develop solutions that make quality education more accessible, improve food security through smart agriculture, enhance healthcare and workplace safety, empower entrepreneurs and small businesses, and create opportunities for young people through digital innovation. I believe technology has the power to bridge gaps, solve local challenges, and unlock Africa's enormous potential, and I am committed to building products that contribute to a smarter, more connected, and more prosperous future.
+</p>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: Ihesiuloakunna@gmail.com</p>
+<p>GitHub: github.com/comaku</p>
+<p>Number: 09032988220</p>
+</section>
+
+<footer><p>© 2026 Akunna Ihesiulo. All Rights Reserved.</p></footer>
+<script>
+// ===============================
+// AKUNNA IHESIULO PORTFOLIO
+// Premium JavaScript
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    //////////////////////////////////////
+    // Loading Animation
+    //////////////////////////////////////
+
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+        document.body.style.transition = "1s";
+        document.body.style.opacity = "1";
+    }, 300);
+
+    //////////////////////////////////////
+    // Typing Effect
+    //////////////////////////////////////
+
+    const title = document.querySelector(".hero-content h2");
+
+    const words = [
+        "Entrepreneur",
+        "Software Developer",
+        "AI Innovator",
+        "IoT Engineer",
+        "Problem Solver",
+        "Tech Founder"
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+
+        const current = words[wordIndex];
+
+        if (!deleting) {
+
+            title.innerHTML = current.substring(0, charIndex++);
+
+            if (charIndex > current.length) {
+
+                deleting = true;
+
+                setTimeout(typeEffect, 1500);
+
+                return;
+
+            }
+
+        }
+
+        else {
+
+            title.innerHTML = current.substring(0, charIndex--);
+
+            if (charIndex === 0) {
+
+                deleting = false;
+
+                wordIndex++;
+
+                if (wordIndex >= words.length)
+                    wordIndex = 0;
+
+            }
+
+        }
+
+        setTimeout(typeEffect, deleting ? 50 : 120);
+
+    }
+
+    typeEffect();
+
+
+    //////////////////////////////////////
+    // Navbar Scroll
+    //////////////////////////////////////
+
+    const nav = document.querySelector("nav");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 100) {
+
+            nav.style.background = "rgba(5,10,30,.95)";
+            nav.style.boxShadow = "0 10px 30px rgba(0,0,0,.4)";
+
+        }
+
+        else {
+
+            nav.style.background = "rgba(10,15,30,.55)";
+            nav.style.boxShadow = "none";
+
+        }
+
+    });
+
+
+    //////////////////////////////////////
+    // Active Nav Link
+    //////////////////////////////////////
+
+    const sections = document.querySelectorAll("section");
+
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const top = section.offsetTop - 150;
+
+            if (pageYOffset >= top)
+                current = section.id;
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            if (link.getAttribute("href") == "#" + current)
+                link.classList.add("active");
+
+        });
+
+    });
+
+
+    //////////////////////////////////////
+    // Scroll Reveal
+    //////////////////////////////////////
+
+    const observer = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.opacity = "1";
+
+                entry.target.style.transform = "translateY(0px)";
+
+            }
+
+        });
+
+    }, {
+
+        threshold: .15
+
+    });
+
+    document.querySelectorAll("section, article").forEach(el => {
+
+        el.style.opacity = "0";
+
+        el.style.transform = "translateY(60px)";
+
+        el.style.transition = ".8s";
+
+        observer.observe(el);
+
+    });
+
+
+    //////////////////////////////////////
+    // Project Card Hover Tilt
+    //////////////////////////////////////
+
+    document.querySelectorAll("article").forEach(card => {
+
+        card.addEventListener("mousemove", e => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+
+            const y = e.clientY - rect.top;
+
+            const rotateY = (x / rect.width - .5) * 18;
+
+            const rotateX = (rect.height / 2 - y) / 12;
+
+            card.style.transform =
+                `perspective(1000px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                translateY(-10px)`;
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            card.style.transform =
+                "perspective(1000px) rotateX(0) rotateY(0)";
+
+        });
+
+    });
+
+
+    //////////////////////////////////////
+    // Floating Cards
+    //////////////////////////////////////
+
+    document.querySelectorAll("article").forEach((card, i) => {
+
+        setInterval(() => {
+
+            card.style.transform =
+                `translateY(${Math.sin(Date.now()/900+i)*6}px)`;
+
+        }, 40);
+
+    });
+
+
+    //////////////////////////////////////
+    // Mouse Spotlight
+    //////////////////////////////////////
+
+    const spotlight = document.createElement("div");
+
+    spotlight.style.position = "fixed";
+    spotlight.style.width = "350px";
+    spotlight.style.height = "350px";
+    spotlight.style.borderRadius = "50%";
+    spotlight.style.pointerEvents = "none";
+    spotlight.style.background =
+        "radial-gradient(circle, rgba(110,231,255,.08), transparent 70%)";
+    spotlight.style.zIndex = "0";
+
+    document.body.appendChild(spotlight);
+
+    window.addEventListener("mousemove", e => {
+
+        spotlight.style.left = e.clientX - 175 + "px";
+        spotlight.style.top = e.clientY - 175 + "px";
+
+    });
+
+
+    //////////////////////////////////////
+    // Ripple Button
+    //////////////////////////////////////
+
+    document.querySelectorAll(".btn").forEach(button => {
+
+        button.addEventListener("click", e => {
+
+            const circle = document.createElement("span");
+
+            circle.style.position = "absolute";
+
+            circle.style.background = "rgba(255,255,255,.4)";
+
+            circle.style.borderRadius = "50%";
+
+            circle.style.transform = "scale(0)";
+
+            circle.style.animation = "ripple .7s linear";
+
+            circle.style.left = e.offsetX + "px";
+
+            circle.style.top = e.offsetY + "px";
+
+            circle.style.width = "15px";
+
+            circle.style.height = "15px";
+
+            button.appendChild(circle);
+
+            setTimeout(() => {
+
+                circle.remove();
+
+            },700);
+
+        });
+
+    });
+
+
+    //////////////////////////////////////
+    // Random Stars
+    //////////////////////////////////////
+
+    for(let i=0;i<80;i++){
+
+        const star=document.createElement("div");
+
+        star.style.position="fixed";
+
+        star.style.width="2px";
+
+        star.style.height="2px";
+
+        star.style.background="white";
+
+        star.style.left=Math.random()*100+"vw";
+
+        star.style.top=Math.random()*100+"vh";
+
+        star.style.opacity=Math.random();
+
+        star.style.animation=
+        `twinkle ${2+Math.random()*4}s infinite`;
+
+        document.body.appendChild(star);
+
+    }
+
+
+    //////////////////////////////////////
+    // Back To Top Button
+    //////////////////////////////////////
+
+    const topBtn=document.createElement("button");
+
+    topBtn.innerHTML="↑";
+
+    topBtn.style.position="fixed";
+
+    topBtn.style.bottom="30px";
+
+    topBtn.style.right="30px";
+
+    topBtn.style.width="50px";
+
+    topBtn.style.height="50px";
+
+    topBtn.style.borderRadius="50%";
+
+    topBtn.style.border="none";
+
+    topBtn.style.cursor="pointer";
+
+    topBtn.style.background="#6ee7ff";
+
+    topBtn.style.color="#000";
+
+    topBtn.style.fontSize="20px";
+
+    topBtn.style.display="none";
+
+    document.body.appendChild(topBtn);
+
+    window.addEventListener("scroll",()=>{
+
+        topBtn.style.display=
+        window.scrollY>400?"block":"none";
+
+    });
+
+    topBtn.onclick=()=>{
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    };
+
+
+    //////////////////////////////////////
+    // Update Footer Year
+    //////////////////////////////////////
+
+    document.querySelector("footer p").innerHTML=
+    `© ${new Date().getFullYear()} Akunna Ihesiulo. All Rights Reserved.`;
+
+});
+</script>
+</body>
+</html>
