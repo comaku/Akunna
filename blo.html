@@ -1,0 +1,3809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paletra — Cook Smarter with Juri</title>
+
+    <meta
+        name="description"
+        content="Paletra is your AI-powered cooking companion. Discover recipes, cook with Juri, and get access to affordable quality food through Farm Mart."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+/* =========================================================
+   PALETRA
+   Landing Page Styles
+   White + Green + Gold
+========================================================= */
+
+:root {
+
+    --green: #146c43;
+    --green-dark: #0b4b2d;
+    --green-deep: #073b23;
+    --green-light: #e9f5ee;
+
+    --gold: #c99a32;
+    --gold-light: #f8efd8;
+
+    --white: #ffffff;
+    --off-white: #fafbf8;
+
+    --black: #101713;
+    --text: #26312b;
+    --muted: #6d7871;
+    --border: #e6ebe7;
+
+    --shadow: 0 20px 60px rgba(12, 60, 35, 0.10);
+
+    --radius: 22px;
+    --radius-small: 14px;
+
+    --transition: 0.3s ease;
+}
+
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+
+/* ================= PRELOADER ================= */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+.preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-logo {
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 15px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background: var(--green);
+    color: white;
+
+    font-family: "Playfair Display", serif;
+    font-size: 34px;
+    font-weight: 800;
+
+    box-shadow: 0 15px 35px rgba(20, 108, 67, 0.25);
+
+    animation: loaderPulse 1.5s infinite;
+}
+
+.loader-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    color: var(--green-dark);
+}
+
+.loader-content p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.loader-line {
+    width: 130px;
+    height: 3px;
+
+    background: #e8eee9;
+
+    margin: 20px auto 0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.loader-line span {
+    display: block;
+
+    width: 40%;
+    height: 100%;
+
+    background: var(--gold);
+
+    animation: loading 1.3s infinite ease-in-out;
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-150%);
+    }
+
+    100% {
+        transform: translateX(350%);
+    }
+}
+
+@keyframes loaderPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.07);
+    }
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    padding: 18px 0;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        padding 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+
+    backdrop-filter: blur(15px);
+
+    padding: 12px 0;
+
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.06);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-weight: 700;
+}
+
+.logo-mark {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--green);
+    color: white;
+
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+
+    box-shadow: 0 8px 20px rgba(20, 108, 67, 0.2);
+}
+
+.logo-text {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    color: var(--green-dark);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-links a {
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-button {
+    background: var(--green);
+    color: white;
+
+    padding: 12px 21px;
+
+    border-radius: 100px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.nav-button:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+}
+
+.mobile-join {
+    display: none;
+}
+
+.menu-button {
+    display: none;
+
+    background: transparent;
+    color: var(--green-dark);
+
+    font-size: 22px;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    position: relative;
+
+    min-height: 780px;
+
+    padding: 150px 0 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(201, 154, 50, 0.10),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7fbf8 100%
+        );
+}
+
+.hero-background {
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    right: -250px;
+    top: 50px;
+
+    background: rgba(20, 108, 67, 0.06);
+
+    border-radius: 50%;
+
+    filter: blur(2px);
+}
+
+.hero-grid {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.eyebrow,
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--green);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.eyebrow {
+    padding: 8px 14px;
+
+    background: var(--green-light);
+
+    border-radius: 100px;
+
+    margin-bottom: 22px;
+}
+
+.eyebrow-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(52px, 6vw, 78px);
+
+    line-height: 0.98;
+
+    letter-spacing: -2.5px;
+
+    color: var(--green-dark);
+
+    margin-bottom: 28px;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--gold);
+}
+
+.hero-description {
+    max-width: 540px;
+
+    color: var(--muted);
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    margin-bottom: 32px;
+}
+
+.hero-description strong {
+    color: var(--green);
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 15px 23px;
+
+    border-radius: 100px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.button-primary {
+    background: var(--green);
+    color: white;
+
+    box-shadow: 0 12px 30px rgba(20, 108, 67, 0.2);
+}
+
+.button-primary:hover {
+    background: var(--green-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 35px rgba(20, 108, 67, 0.25);
+}
+
+.button-secondary {
+    background: white;
+    color: var(--green-dark);
+
+    border: 1px solid var(--border);
+}
+
+.button-secondary:hover {
+    border-color: var(--green);
+    transform: translateY(-3px);
+}
+
+.hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-top: 35px;
+}
+
+.avatar-stack {
+    display: flex;
+}
+
+.avatar-stack span {
+    width: 32px;
+    height: 32px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--green-light);
+
+    border: 2px solid white;
+
+    border-radius: 50%;
+
+    margin-left: -7px;
+
+    font-size: 15px;
+}
+
+.avatar-stack span:first-child {
+    margin-left: 0;
+}
+
+.hero-trust strong,
+.hero-trust small {
+    display: block;
+}
+
+.hero-trust strong {
+    color: var(--green-dark);
+    font-size: 12px;
+}
+
+.hero-trust small {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+
+/* HERO VISUAL */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-food-card {
+    width: min(420px, 90%);
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 10px;
+
+    box-shadow: 0 35px 80px rgba(13, 58, 35, 0.16);
+
+    transform: rotate(2deg);
+
+    position: relative;
+    z-index: 2;
+}
+
+.food-image {
+    position: relative;
+
+    height: 390px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+.food-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay,
+.farm-image-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.45),
+        transparent 50%
+    );
+}
+
+.recipe-tag {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 9px 13px;
+
+    border-radius: 100px;
+
+    color: var(--green);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-tag i {
+    color: var(--gold);
+    margin-right: 4px;
+}
+
+.food-card-content {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 16px 12px 8px;
+}
+
+.small-label {
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.food-card-content h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 22px;
+
+    color: var(--green-dark);
+
+    margin-top: 3px;
+}
+
+.rating {
+    color: var(--gold);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.rating span {
+    color: var(--text);
+}
+
+.food-meta {
+    display: flex;
+    gap: 15px;
+
+    padding: 8px 12px 14px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.food-meta i {
+    color: var(--green);
+    margin-right: 4px;
+}
+
+
+/* FLOATING CARDS */
+
+.floating-card {
+    position: absolute;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow: 0 20px 50px rgba(12, 60, 35, 0.15);
+
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+}
+
+.juri-floating {
+    z-index: 4;
+
+    top: 50px;
+    left: -5px;
+
+    width: 250px;
+
+    padding: 13px;
+
+    gap: 10px;
+
+    animation: floatOne 4s ease-in-out infinite;
+}
+
+.juri-avatar {
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--green),
+        #208e59
+    );
+
+    color: white;
+
+    border-radius: 13px;
+
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.juri-floating strong,
+.juri-floating p {
+    display: block;
+}
+
+.juri-floating strong {
+    color: var(--green-dark);
+    font-size: 11px;
+}
+
+.juri-floating p {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+.voice-icon {
+    margin-left: auto;
+
+    width: 28px;
+    height: 28px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--gold-light);
+    color: var(--gold);
+
+    font-size: 10px;
+}
+
+.ingredient-floating {
+    z-index: 4;
+
+    right: -5px;
+    bottom: 45px;
+
+    padding: 13px;
+
+    width: 240px;
+
+    gap: 10px;
+
+    animation: floatTwo 5s ease-in-out infinite;
+}
+
+.ingredient-icon {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--green-light);
+
+    color: var(--green);
+}
+
+.ingredient-floating strong {
+    display: block;
+
+    color: var(--green-dark);
+
+    font-size: 11px;
+}
+
+.ingredient-floating p {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 3px;
+}
+
+.check-icon {
+    margin-left: auto;
+
+    color: var(--green);
+
+    font-size: 14px;
+}
+
+@keyframes floatOne {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes floatTwo {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(12px);
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+section {
+    padding: 110px 0;
+}
+
+.section-heading {
+    max-width: 650px;
+}
+
+.section-heading.centered {
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.section-heading h2,
+.juri-content h2,
+.farm-heading h2,
+.join-content h2 {
+    font-family: "Playfair Display", serif;
+
+    color: var(--green-dark);
+
+    font-size: clamp(38px, 5vw, 58px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+
+    margin-top: 12px;
+}
+
+.section-heading h2 span,
+.juri-content h2 span,
+.farm-heading h2 span,
+.join-content h2 span {
+    color: var(--gold);
+}
+
+.section-heading p {
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    margin-top: 18px;
+}
+
+
+/* ================= FEATURE GRID ================= */
+
+.intro-section {
+    background: var(--off-white);
+}
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.feature-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 34px;
+
+    min-height: 350px;
+
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: var(--shadow);
+}
+
+.feature-large {
+    background: var(--green);
+
+    color: white;
+}
+
+.feature-number {
+    position: absolute;
+
+    top: 30px;
+    right: 32px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    opacity: 0.45;
+}
+
+.feature-large .feature-number {
+    color: white;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    margin-bottom: 28px;
+
+    font-size: 17px;
+}
+
+.green-icon {
+    background: var(--green-light);
+    color: var(--green);
+}
+
+.gold-icon {
+    background: var(--gold-light);
+    color: var(--gold);
+}
+
+.feature-large .feature-icon {
+    background: rgba(255, 255, 255, 0.13);
+    color: #f5d47c;
+}
+
+.feature-card h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 27px;
+
+    color: var(--green-dark);
+
+    margin-bottom: 12px;
+}
+
+.feature-large h3 {
+    color: white;
+}
+
+.feature-card p {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    max-width: 470px;
+}
+
+.feature-large p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 25px;
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.feature-decoration {
+    position: absolute;
+
+    right: -35px;
+    bottom: -65px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 230px;
+
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.recipe-mini {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.mini-image {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.mini-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.recipe-mini strong,
+.recipe-mini small {
+    display: block;
+}
+
+.recipe-mini strong {
+    font-size: 12px;
+    color: var(--green-dark);
+}
+
+.recipe-mini small {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+}
+
+.video-preview {
+    position: relative;
+
+    height: 105px;
+
+    margin-top: 25px;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+}
+
+.video-preview img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-button {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: white;
+    color: var(--green);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    font-size: 12px;
+}
+
+.quantity-pills {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 24px;
+
+    flex-wrap: wrap;
+}
+
+.quantity-pills span {
+    padding: 8px 11px;
+
+    border-radius: 100px;
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+/* ================= JURI ================= */
+
+.juri-section {
+    background: white;
+}
+
+.juri-grid {
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    align-items: center;
+
+    gap: 80px;
+}
+
+.juri-content > p {
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin: 20px 0 30px;
+}
+
+.juri-features {
+    display: grid;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.juri-feature {
+    display: flex;
+
+    gap: 13px;
+}
+
+.check-circle {
+    flex-shrink: 0;
+
+    width: 25px;
+    height: 25px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    font-size: 10px;
+}
+
+.juri-feature strong {
+    display: block;
+
+    color: var(--green-dark);
+
+    font-size: 13px;
+}
+
+.juri-feature p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 4px;
+
+    line-height: 1.6;
+}
+
+
+/* CHAT WINDOW */
+
+.juri-interface {
+    display: flex;
+    justify-content: center;
+}
+
+.chat-window {
+    width: min(480px, 100%);
+
+    background: #f7faf8;
+
+    border: 1px solid var(--border);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow: 0 30px 70px rgba(12, 60, 35, 0.12);
+}
+
+.chat-header {
+    padding: 16px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: white;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.chat-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-profile strong,
+.chat-profile span {
+    display: block;
+}
+
+.chat-profile strong {
+    font-size: 13px;
+    color: var(--green-dark);
+}
+
+.chat-profile span {
+    color: var(--green);
+    font-size: 9px;
+    margin-top: 3px;
+}
+
+.chat-profile span i {
+    font-size: 6px;
+    margin-right: 3px;
+}
+
+.chat-body {
+    padding: 25px 20px;
+
+    min-height: 390px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.chat-date {
+    text-align: center;
+
+    color: #a0aaa4;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.message {
+    max-width: 75%;
+
+    padding: 12px 14px;
+
+    border-radius: 15px;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+.juri-message {
+    align-self: flex-start;
+
+    background: white;
+
+    color: var(--text);
+
+    border-bottom-left-radius: 4px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.user-message {
+    align-self: flex-end;
+
+    background: var(--green);
+
+    color: white;
+
+    border-bottom-right-radius: 4px;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 15px;
+
+    background: white;
+
+    border-top: 1px solid var(--border);
+
+    color: #9aa49e;
+
+    font-size: 11px;
+}
+
+.chat-input button {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: var(--muted);
+}
+
+.chat-input span {
+    flex: 1;
+}
+
+.chat-input .mic-button {
+    background: var(--green);
+    color: white;
+}
+
+
+/* ================= FARM MART ================= */
+
+.farm-section {
+    background: var(--off-white);
+}
+
+.farm-heading {
+    display: grid;
+
+    grid-template-columns: 1fr 0.7fr;
+
+    gap: 70px;
+
+    align-items: end;
+
+    margin-bottom: 50px;
+}
+
+.farm-heading > p {
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+.farm-showcase {
+    display: grid;
+
+    grid-template-columns: 1.05fr 0.95fr;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(12, 60, 35, 0.06);
+}
+
+.farm-image {
+    position: relative;
+
+    min-height: 500px;
+}
+
+.farm-image img {
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.farm-badge {
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+
+    background: white;
+
+    padding: 10px 14px;
+
+    border-radius: 100px;
+
+    color: var(--green);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.farm-badge i {
+    color: var(--gold);
+
+    margin-right: 5px;
+}
+
+.farm-info {
+    padding: 60px 55px;
+}
+
+.farm-small-title {
+    color: var(--green);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+}
+
+.farm-info h3 {
+    font-family: "Playfair Display", serif;
+
+    color: var(--green-dark);
+
+    font-size: 39px;
+
+    line-height: 1.08;
+
+    margin: 15px 0;
+}
+
+.farm-info h3 span {
+    color: var(--gold);
+}
+
+.farm-info > p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+.farm-options {
+    display: grid;
+
+    gap: 14px;
+
+    margin: 30px 0;
+}
+
+.farm-option {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.option-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    border-radius: 12px;
+}
+
+.gold-option {
+    background: var(--gold-light);
+    color: var(--gold);
+}
+
+.farm-option strong,
+.farm-option span {
+    display: block;
+}
+
+.farm-option strong {
+    color: var(--green-dark);
+
+    font-size: 12px;
+}
+
+.farm-option span {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 3px;
+}
+
+.text-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--green);
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.text-link:hover {
+    gap: 15px;
+}
+
+
+/* ================= HOW IT WORKS ================= */
+
+.how-section {
+    background: white;
+}
+
+.steps-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr
+        auto
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-number {
+    color: var(--gold);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 18px;
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    font-size: 17px;
+}
+
+.step h3 {
+    font-family: "Playfair Display", serif;
+
+    color: var(--green-dark);
+
+    font-size: 20px;
+
+    margin-bottom: 7px;
+}
+
+.step p {
+    max-width: 150px;
+
+    margin: auto;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+.step-line {
+    width: 50px;
+    height: 1px;
+
+    background: var(--border);
+
+    margin: 0 12px;
+}
+
+
+/* ================= JOIN ================= */
+
+.join-section {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--green-dark);
+
+    color: white;
+}
+
+.join-pattern {
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    right: -250px;
+    top: -250px;
+
+    border-radius: 50%;
+
+    border: 100px solid rgba(255, 255, 255, 0.025);
+}
+
+.join-content {
+    position: relative;
+
+    max-width: 720px;
+
+    text-align: center;
+
+    margin: auto;
+}
+
+.light-label {
+    color: #d6b65d;
+}
+
+.join-content h2 {
+    color: white;
+
+    margin-top: 15px;
+}
+
+.join-content h2 span {
+    color: #e3c66e;
+}
+
+.join-content > p {
+    color: rgba(255, 255, 255, 0.7);
+
+    line-height: 1.8;
+
+    margin: 18px auto 35px;
+
+    max-width: 500px;
+}
+
+.waitlist-form {
+    max-width: 600px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 22px;
+
+    text-align: left;
+
+    backdrop-filter: blur(10px);
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.input-group {
+    margin-bottom: 17px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 12px;
+
+    transition: var(--transition);
+}
+
+.input-group select option {
+    color: var(--text);
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #d6b65d;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.form-button {
+    width: 100%;
+
+    background: var(--gold);
+
+    color: var(--green-dark);
+
+    margin-top: 5px;
+}
+
+.form-button:hover {
+    background: #dfb84e;
+
+    transform: translateY(-2px);
+}
+
+.form-note {
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 9px;
+
+    margin-top: 13px;
+}
+
+.form-note i {
+    margin-right: 4px;
+}
+
+.success-message {
+    display: none;
+
+    padding: 45px 25px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 22px;
+}
+
+.success-message.show {
+    display: block;
+}
+
+.waitlist-form.hidden {
+    display: none;
+}
+
+.success-icon {
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    margin: auto;
+
+    background: var(--gold);
+
+    color: var(--green-dark);
+
+    border-radius: 50%;
+
+    font-size: 20px;
+}
+
+.success-message h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 27px;
+
+    margin-top: 18px;
+}
+
+.success-message p {
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 12px;
+
+    margin-top: 7px;
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background: #062d1b;
+
+    color: white;
+
+    padding: 55px 0 25px;
+}
+
+.footer-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding-bottom: 40px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-logo .logo-mark {
+    background: var(--gold);
+
+    color: var(--green-dark);
+
+    box-shadow: none;
+}
+
+.footer-logo .logo-text {
+    color: white;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 11px;
+
+    margin-top: 8px;
+}
+
+.footer-links {
+    display: flex;
+
+    gap: 25px;
+
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 11px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+
+    gap: 8px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 12px;
+
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--gold);
+
+    color: var(--green-dark);
+
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-top: 25px;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-size: 9px;
+}
+
+.footer-bottom span {
+    color: var(--gold);
+}
+
+
+/* ================= SCROLL REVEAL ================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 950px) {
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .hero-content {
+        text-align: center;
+        margin: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-trust {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        min-height: 500px;
+    }
+
+    .juri-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .juri-content {
+        text-align: center;
+    }
+
+    .juri-features {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    .farm-heading {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .farm-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .farm-image {
+        min-height: 400px;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 45px 25px;
+    }
+
+    .step-line {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .container {
+        width: min(100% - 30px, 600px);
+    }
+
+    section {
+        padding: 80px 0;
+    }
+
+    .nav-links,
+    .nav-button {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav-links.active {
+        position: absolute;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        top: 72px;
+
+        left: 15px;
+        right: 15px;
+
+        padding: 10px;
+
+        background: white;
+
+        border: 1px solid var(--border);
+
+        border-radius: 18px;
+
+        box-shadow: var(--shadow);
+    }
+
+    .nav-links.active a {
+        padding: 13px;
+
+        border-radius: 10px;
+    }
+
+    .nav-links.active a:hover {
+        background: var(--green-light);
+    }
+
+    .mobile-join {
+        display: block !important;
+
+        background: var(--green);
+
+        color: white !important;
+
+        text-align: center;
+
+        margin-top: 5px;
+    }
+
+    .hero {
+        padding-top: 125px;
+
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+    .hero-visual {
+        min-height: 440px;
+    }
+
+    .food-image {
+        height: 330px;
+    }
+
+    .juri-floating {
+        left: -5px;
+        top: 25px;
+
+        transform: scale(0.85);
+    }
+
+    .ingredient-floating {
+        right: -5px;
+        bottom: 20px;
+
+        transform: scale(0.85);
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+        min-height: 320px;
+    }
+
+    .farm-info {
+        padding: 40px 25px;
+    }
+
+    .farm-info h3 {
+        font-size: 34px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .footer-top {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 44px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .hero-buttons .button {
+        width: 100%;
+    }
+
+    .hero-visual {
+        min-height: 390px;
+    }
+
+    .main-food-card {
+        width: 95%;
+    }
+
+    .food-image {
+        height: 280px;
+    }
+
+    .juri-floating {
+        width: 210px;
+
+        transform: scale(0.75);
+
+        transform-origin: left top;
+    }
+
+    .ingredient-floating {
+        width: 210px;
+
+        transform: scale(0.75);
+
+        transform-origin: right bottom;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .waitlist-form {
+        padding: 20px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= PRELOADER ================= -->
+
+<div class="preloader" id="preloader">
+
+    <div class="loader-content">
+
+        <div class="loader-logo">
+            P
+        </div>
+
+        <h2>Paletra</h2>
+
+        <p>Cook smarter. Live better.</p>
+
+        <div class="loader-line">
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar" id="navbar">
+
+    <div class="container nav-container">
+
+        <a href="#" class="logo">
+
+            <span class="logo-mark">P</span>
+
+            <span class="logo-text">
+                Paletra
+            </span>
+
+        </a>
+
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="#features">Features</a>
+
+            <a href="#juri">Juri AI</a>
+
+            <a href="#farm-mart">Farm Mart</a>
+
+            <a href="#how-it-works">How It Works</a>
+
+            <a href="#join" class="mobile-join">
+                Join Paletra
+            </a>
+
+        </nav>
+
+
+        <a href="#join" class="nav-button">
+            Join Paletra
+        </a>
+
+
+        <button class="menu-button" id="menuButton" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-background"></div>
+
+    <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+
+            <div class="eyebrow">
+
+                <span class="eyebrow-dot"></span>
+
+                THE FUTURE OF COOKING
+
+            </div>
+
+
+            <h1>
+
+                Your kitchen,
+
+                <span>
+                    now has intelligence.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Meet <strong>Juri</strong>, your AI-powered cooking companion.
+                Discover delicious recipes, learn how to cook them with ease,
+                and soon shop for affordable quality food — all in one place.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#join" class="button button-primary">
+
+                    Join the Waitlist
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+
+                <a href="#features" class="button button-secondary">
+
+                    Explore Paletra
+
+                    <i class="fas fa-play"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-trust">
+
+                <div class="avatar-stack">
+
+                    <span>👩🏾</span>
+                    <span>👨🏾</span>
+                    <span>👩🏿</span>
+                    <span>👨🏿</span>
+
+                </div>
+
+                <div>
+
+                    <strong>Built for everyday cooks</strong>
+
+                    <small>
+                        Simple. Smart. Affordable.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual reveal">
+
+            <div class="hero-card main-food-card">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=85"
+                        alt="Delicious rice meal"
+                    >
+
+                    <div class="image-overlay"></div>
+
+                    <div class="recipe-tag">
+                        <i class="fas fa-sparkles"></i>
+                        Juri recommends
+                    </div>
+
+                </div>
+
+
+                <div class="food-card-content">
+
+                    <div>
+
+                        <span class="small-label">
+                            TODAY'S RECIPE
+                        </span>
+
+                        <h3>
+                            Nigerian Jollof Rice
+                        </h3>
+
+                    </div>
+
+
+                    <div class="rating">
+
+                        <i class="fas fa-star"></i>
+
+                        <span>4.9</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="food-meta">
+
+                    <span>
+                        <i class="far fa-clock"></i>
+                        45 mins
+                    </span>
+
+                    <span>
+                        <i class="fas fa-fire"></i>
+                        Medium
+                    </span>
+
+                    <span>
+                        <i class="fas fa-users"></i>
+                        4 servings
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- JURI FLOATING CARD -->
+
+            <div class="floating-card juri-floating">
+
+                <div class="juri-avatar">
+                    J
+                </div>
+
+                <div>
+
+                    <strong>
+                        Hi, I'm Juri 👋
+                    </strong>
+
+                    <p>
+                        What are we cooking today?
+                    </p>
+
+                </div>
+
+                <div class="voice-icon">
+
+                    <i class="fas fa-microphone"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- INGREDIENT CARD -->
+
+            <div class="floating-card ingredient-floating">
+
+                <div class="ingredient-icon">
+                    <i class="fas fa-carrot"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Your ingredients
+                    </strong>
+
+                    <p>
+                        8 ingredients ready
+                    </p>
+
+                </div>
+
+                <i class="fas fa-check-circle check-icon"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-indicator">
+
+        <span>Scroll to explore</span>
+
+        <i class="fas fa-arrow-down"></i>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="intro-section" id="features">
+
+    <div class="container">
+
+        <div class="section-heading centered reveal">
+
+            <span class="section-label">
+                ONE PLATFORM
+            </span>
+
+            <h2>
+                Everything you need
+                <span>for your kitchen.</span>
+            </h2>
+
+            <p>
+                Paletra brings recipes, AI cooking assistance and affordable
+                food shopping together into one simple experience.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <!-- FEATURE 1 -->
+
+            <article class="feature-card feature-large reveal">
+
+                <div class="feature-number">
+                    01
+                </div>
+
+                <div class="feature-icon green-icon">
+
+                    <i class="fas fa-wand-magic-sparkles"></i>
+
+                </div>
+
+                <h3>
+                    Cook with Juri
+                </h3>
+
+                <p>
+                    Your personal AI cooking assistant that helps you discover
+                    recipes, understand ingredients and answer your cooking
+                    questions whenever you need help.
+                </p>
+
+                <div class="feature-link">
+
+                    Meet Juri
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </div>
+
+                <div class="feature-decoration">
+                    J
+                </div>
+
+            </article>
+
+
+            <!-- FEATURE 2 -->
+
+            <article class="feature-card reveal">
+
+                <div class="feature-number">
+                    02
+                </div>
+
+                <div class="feature-icon gold-icon">
+
+                    <i class="fas fa-utensils"></i>
+
+                </div>
+
+                <h3>
+                    Discover Recipes
+                </h3>
+
+                <p>
+                    Find recipes that match your taste, time and ingredients.
+                    Explore different meals and learn how to prepare them.
+                </p>
+
+                <div class="recipe-mini">
+
+                    <div class="mini-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80"
+                            alt="Healthy meal"
+                        >
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Explore meals
+                        </strong>
+
+                        <small>
+                            Hundreds of possibilities
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- FEATURE 3 -->
+
+            <article class="feature-card reveal">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <div class="feature-icon green-icon">
+
+                    <i class="fas fa-play"></i>
+
+                </div>
+
+                <h3>
+                    Learn by Watching
+                </h3>
+
+                <p>
+                    Each recipe can take you directly to a cooking video,
+                    making it easier to follow along and actually prepare
+                    your meal.
+                </p>
+
+                <div class="video-preview">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                        alt="Cooking video"
+                    >
+
+                    <div class="play-button">
+
+                        <i class="fas fa-play"></i>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- FEATURE 4 -->
+
+            <article class="feature-card farm-feature reveal">
+
+                <div class="feature-number">
+                    04
+                </div>
+
+                <div class="feature-icon gold-icon">
+
+                    <i class="fas fa-basket-shopping"></i>
+
+                </div>
+
+                <h3>
+                    Farm Mart
+                </h3>
+
+                <p>
+                    Get access to affordable and quality food products.
+                    Buy small quantities for yourself or larger quantities
+                    for your home and business.
+                </p>
+
+                <div class="quantity-pills">
+
+                    <span>
+                        Small Quantity
+                    </span>
+
+                    <span>
+                        Large Quantity
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= JURI ================= -->
+
+<section class="juri-section" id="juri">
+
+    <div class="container juri-grid">
+
+        <div class="juri-content reveal">
+
+            <span class="section-label">
+                MEET YOUR AI COOKING COMPANION
+            </span>
+
+            <h2>
+                Say hello to
+                <span>Juri.</span>
+            </h2>
+
+            <p>
+                You don't have to know everything about cooking.
+                Juri is here to help.
+            </p>
+
+            <div class="juri-features">
+
+                <div class="juri-feature">
+
+                    <div class="check-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Ask cooking questions
+                        </strong>
+
+                        <p>
+                            Get instant answers while preparing your meal.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="juri-feature">
+
+                    <div class="check-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Find recipe ideas
+                        </strong>
+
+                        <p>
+                            Tell Juri what you're craving and get ideas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="juri-feature">
+
+                    <div class="check-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Use your voice
+                        </strong>
+
+                        <p>
+                            Talk naturally with Juri using voice interaction.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a href="#join" class="button button-primary">
+
+                Meet Juri
+
+                <i class="fas fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- CHAT UI -->
+
+        <div class="juri-interface reveal">
+
+            <div class="chat-window">
+
+                <div class="chat-header">
+
+                    <div class="chat-profile">
+
+                        <div class="juri-avatar">
+                            J
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Juri
+                            </strong>
+
+                            <span>
+                                <i class="fas fa-circle"></i>
+                                Online
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <i class="fas fa-ellipsis"></i>
+
+                </div>
+
+
+                <div class="chat-body">
+
+                    <div class="chat-date">
+                        TODAY
+                    </div>
+
+
+                    <div class="message juri-message">
+
+                        Hi! 👋 I'm Juri.
+
+                        <br><br>
+
+                        What would you like to cook today?
+
+                    </div>
+
+
+                    <div class="message user-message">
+
+                        I have rice, chicken, tomatoes and onions.
+
+                    </div>
+
+
+                    <div class="message juri-message">
+
+                        Perfect! 🍚
+
+                        <br><br>
+
+                        I can help you make a delicious
+                        chicken jollof rice.
+
+                        <br><br>
+
+                        Would you like an easy recipe?
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input">
+
+                    <button>
+                        <i class="fas fa-plus"></i>
+                    </button>
+
+                    <span>
+                        Ask Juri anything...
+                    </span>
+
+                    <button class="mic-button">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FARM MART ================= -->
+
+<section class="farm-section" id="farm-mart">
+
+    <div class="container">
+
+        <div class="farm-heading reveal">
+
+            <div>
+
+                <span class="section-label">
+                    COMING TO PALETRA
+                </span>
+
+                <h2>
+                    Your food.
+                    <span>At better prices.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Farm Mart will make it easier to access quality food products
+                without making grocery shopping complicated.
+            </p>
+
+        </div>
+
+
+        <div class="farm-showcase reveal">
+
+            <div class="farm-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=85"
+                    alt="Fresh farm produce"
+                >
+
+                <div class="farm-image-overlay"></div>
+
+                <div class="farm-badge">
+
+                    <i class="fas fa-leaf"></i>
+
+                    Fresh from the farm
+
+                </div>
+
+            </div>
+
+
+            <div class="farm-info">
+
+                <span class="farm-small-title">
+                    FARM MART
+                </span>
+
+                <h3>
+                    Buy what you need.
+                    <br>
+                    <span>At a price you love.</span>
+                </h3>
+
+                <p>
+                    From everyday ingredients to larger food supplies,
+                    Farm Mart is designed to give you access to affordable
+                    and quality food products.
+                </p>
+
+
+                <div class="farm-options">
+
+                    <div class="farm-option">
+
+                        <div class="option-icon">
+                            <i class="fas fa-bag-shopping"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Small Quantity
+                            </strong>
+
+                            <span>
+                                Perfect for individuals and students.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="farm-option">
+
+                        <div class="option-icon gold-option">
+                            <i class="fas fa-boxes-stacked"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Large Quantity
+                            </strong>
+
+                            <span>
+                                Perfect for families and businesses.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <a href="#join" class="text-link">
+
+                    Get early access
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how-section" id="how-it-works">
+
+    <div class="container">
+
+        <div class="section-heading centered reveal">
+
+            <span class="section-label">
+                SIMPLE BY DESIGN
+            </span>
+
+            <h2>
+                Your kitchen,
+                <span>made easier.</span>
+            </h2>
+
+            <p>
+                Paletra is designed to remove the stress from deciding
+                what to cook and figuring out how to cook it.
+            </p>
+
+        </div>
+
+
+        <div class="steps-grid">
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <div class="step-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+
+                <h3>
+                    Discover
+                </h3>
+
+                <p>
+                    Find a recipe that looks delicious.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <div class="step-icon">
+                    <i class="fas fa-carrot"></i>
+                </div>
+
+                <h3>
+                    Prepare
+                </h3>
+
+                <p>
+                    See exactly what ingredients you need.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <div class="step-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+
+                <h3>
+                    Cook
+                </h3>
+
+                <p>
+                    Follow a helpful cooking video.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step reveal">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <div class="step-icon">
+                    <i class="fas fa-face-smile"></i>
+                </div>
+
+                <h3>
+                    Enjoy
+                </h3>
+
+                <p>
+                    Eat well and come back for your next meal.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA / JOIN ================= -->
+
+<section class="join-section" id="join">
+
+    <div class="join-pattern"></div>
+
+    <div class="container join-content reveal">
+
+        <span class="section-label light-label">
+            PALETRA IS COMING
+        </span>
+
+        <h2>
+            Be one of the
+            <span>first to experience it.</span>
+        </h2>
+
+        <p>
+            Join our early community and be notified when Paletra launches.
+        </p>
+
+
+        <form class="waitlist-form" id="waitlistForm">
+
+            <div class="form-row">
+
+                <div class="input-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="whatsapp">
+                        WhatsApp Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="whatsapp"
+                        name="whatsapp"
+                        placeholder="+234 800 000 0000"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Jofort@gmail.com"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="interest">
+                    What interests you most?
+                </label>
+
+                <select id="interest" name="interest" required>
+
+                    <option value="" disabled selected>
+                        Select an option
+                    </option>
+
+                    <option value="Juri AI">
+                        Juri AI Cooking Assistant
+                    </option>
+
+                    <option value="Recipes">
+                        Recipes & Cooking Videos
+                    </option>
+
+                    <option value="Farm Mart">
+                        Farm Mart
+                    </option>
+
+                    <option value="Everything">
+                        Everything about Paletra
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="button form-button"
+            >
+
+                Join Paletra
+
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+
+            <p class="form-note">
+
+                <i class="fas fa-lock"></i>
+
+                Your information is safe with us.
+
+            </p>
+
+        </form>
+
+
+        <div class="success-message" id="successMessage">
+
+            <div class="success-icon">
+
+                <i class="fas fa-check"></i>
+
+            </div>
+
+            <h3>
+                You're on the list! 🎉
+            </h3>
+
+            <p>
+                We'll let you know when Paletra is ready.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <a href="#" class="logo footer-logo">
+
+                    <span class="logo-mark">
+                        P
+                    </span>
+
+                    <span class="logo-text">
+                        Paletra
+                    </span>
+
+                </a>
+
+                <p>
+                    Cook smarter. Live better.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#features">
+                    Features
+                </a>
+
+                <a href="#juri">
+                    Juri
+                </a>
+
+                <a href="#farm-mart">
+                    Farm Mart
+                </a>
+
+                <a href="#join">
+                    Join Us
+                </a>
+
+            </div>
+
+
+            <div class="social-links">
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="Twitter">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+
+                <a href="#" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Paletra. All rights reserved.
+            </p>
+
+            <p>
+                Made with <span>♥</span> for food lovers.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+/* =========================================================
+   PALETRA
+   Landing Page JavaScript
+========================================================= */
+
+
+/* ================= PRELOADER ================= */
+
+window.addEventListener("load", () => {
+
+    const preloader = document.getElementById("preloader");
+
+    setTimeout(() => {
+
+        preloader.classList.add("hide");
+
+    }, 900);
+
+});
+
+
+/* ================= NAVBAR ================= */
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* ================= MOBILE MENU ================= */
+
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+    const icon = menuButton.querySelector("i");
+
+    if (navLinks.classList.contains("active")) {
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+
+    } else {
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+/* CLOSE MOBILE MENU WHEN LINK IS CLICKED */
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+        const icon = menuButton.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+
+/* ================= SCROLL REVEAL ================= */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("active");
+
+                revealObserver.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold: 0.12
+    }
+
+);
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* ================= WAITLIST FORM ================= */
+
+const waitlistForm = document.getElementById("waitlistForm");
+const successMessage = document.getElementById("successMessage");
+
+
+/*
+    IMPORTANT:
+
+    Replace this URL later with your
+    Google Apps Script Web App URL.
+
+    Example:
+
+    const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+*/
+
+const GOOGLE_SCRIPT_URL = "";
+
+
+waitlistForm.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+
+    const submitButton =
+        waitlistForm.querySelector("button[type='submit']");
+
+
+    const originalButtonText = submitButton.innerHTML;
+
+
+    submitButton.disabled = true;
+
+    submitButton.innerHTML = `
+        <i class="fas fa-spinner fa-spin"></i>
+        Joining...
+    `;
+
+
+    const formData = {
+
+        name:
+            document.getElementById("name").value.trim(),
+
+        whatsapp:
+            document.getElementById("whatsapp").value.trim(),
+
+        email:
+            document.getElementById("email").value.trim(),
+
+        interest:
+            document.getElementById("interest").value
+
+    };
+
+
+    /*
+        GOOGLE SHEETS CONNECTION
+
+        Once your Google Apps Script is ready,
+        uncomment/activate this section.
+
+    */
+
+    if (GOOGLE_SCRIPT_URL) {
+
+        try {
+
+            await fetch(GOOGLE_SCRIPT_URL, {
+
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(formData)
+
+            });
+
+        } catch (error) {
+
+            console.error(
+                "Google Sheets error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /*
+        TEMPORARY SUCCESS
+
+        This allows the landing page to work
+        before Google Sheets is connected.
+    */
+
+    setTimeout(() => {
+
+        waitlistForm.classList.add("hidden");
+
+        successMessage.classList.add("show");
+
+        waitlistForm.reset();
+
+    }, 800);
+
+});
+
+
+/* ================= BUTTON RIPPLE ================= */
+
+document.querySelectorAll(".button").forEach(button => {
+
+    button.addEventListener("click", function(event) {
+
+        const ripple = document.createElement("span");
+
+        ripple.classList.add("ripple");
+
+        const rect = this.getBoundingClientRect();
+
+        ripple.style.left =
+            `${event.clientX - rect.left}px`;
+
+        ripple.style.top =
+            `${event.clientY - rect.top}px`;
+
+        this.appendChild(ripple);
+
+        setTimeout(() => {
+
+            ripple.remove();
+
+        }, 600);
+
+    });
+
+});
+
+
+/* ================= PREVENT EMPTY LINKS ================= */
+
+document.querySelectorAll('a[href="#"]').forEach(link => {
+
+    link.addEventListener("click", event => {
+
+        event.preventDefault();
+
+    });
+
+});
+</script>
+
+</body>
+</html>
