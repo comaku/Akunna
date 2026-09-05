@@ -1,1828 +1,4292 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Delposh Fitness | Build Your Best Self</title>
 
-<link rel="icon" href="m.png">
+<link rel="icon" href="immm.jpg">
 
     <meta
         name="description"
-        content="Register your school for our PET bottle collection and environmental impact program."
+        content="Delposh Fitness — Transform your body, strengthen your mind and become your best self."
     >
 
-    <title>Register Your School | OctaWealth Initiative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
     <style>
+/* =========================================================
+   DELPOSH FITNESS
+   PREMIUM FITNESS WEBSITE
+========================================================= */
+
+:root {
+
+    --yellow: #f5c400;
+    --yellow-light: #ffd83d;
+    --black: #070707;
+    --black-2: #0d0d0d;
+    --dark: #111111;
+    --gray: #171717;
+    --gray-2: #242424;
+    --gray-3: #777777;
+    --white: #ffffff;
+    --muted: #aaaaaa;
+
+    --font-display: "Barlow Condensed", sans-serif;
+    --font-body: "Montserrat", sans-serif;
+
+    --transition: 0.35s ease;
+}
+
 
-        /* =========================================
-           GLOBAL
-        ========================================= */
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body {
+    font-family: var(--font-body);
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+}
 
-        :root {
-            --green: #087443;
-            --green-dark: #04532f;
-            --green-light: #eaf8f0;
-            --lime: #b8df35;
-            --dark: #10231b;
-            --text: #5d6d65;
-            --white: #ffffff;
-            --background: #f5faf7;
-            --border: #dfe9e3;
-            --danger: #dc2626;
-            --shadow: 0 20px 60px rgba(5, 65, 38, 0.10);
-        }
+body.loading {
+    overflow: hidden;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
 
-        body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-            background: var(--background);
-            color: var(--dark);
-            line-height: 1.6;
-        }
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
 
-        button,
-        input,
-        select,
-        textarea {
-            font: inherit;
-        }
+button {
+    cursor: pointer;
+}
 
-        /* =========================================
-           NAVBAR
-        ========================================= */
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
 
-        .navbar {
-            height: 76px;
-
-            background: rgba(255,255,255,.96);
-
-            border-bottom:
-                1px solid var(--border);
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 6%;
+/* =========================================================
+   PRELOADER
+========================================================= */
 
-            position: sticky;
-            top: 0;
+#preloader {
 
-            z-index: 1000;
+    position: fixed;
+    inset: 0;
 
-            backdrop-filter: blur(12px);
-        }
+    background: #050505;
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+    z-index: 99999;
 
-            font-size: 21px;
-            font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            color: var(--green);
+    overflow: hidden;
 
-            text-decoration: none;
-        }
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
+#preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
 
-            border-radius: 12px;
+.preloader-bg {
 
-            background: var(--green);
-            color: white;
+    position: absolute;
+    inset: 0;
 
-            display: grid;
-            place-items: center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(245,196,0,0.12),
+            transparent 35%
+        );
 
-            font-size: 21px;
-        }
+    animation: pulseBackground 2s infinite alternate;
+}
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
+@keyframes pulseBackground {
 
-        .nav-links a {
-            text-decoration: none;
+    from {
+        transform: scale(1);
+        opacity: .5;
+    }
 
-            color: var(--text);
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
 
-            font-size: 14px;
-            font-weight: 600;
-        }
 
-        .nav-links a:hover {
-            color: var(--green);
-        }
+.loader-content {
 
-        .nav-button {
-            background: var(--green);
-            color: white !important;
+    width: min(550px, 85%);
 
-            padding: 11px 18px;
+    position: relative;
+    z-index: 2;
 
-            border-radius: 9px;
-        }
+    text-align: center;
+}
 
-        .mobile-menu {
-            display: none;
 
-            background: none;
-            border: none;
+.loader-logo {
 
-            font-size: 28px;
-            cursor: pointer;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        /* =========================================
-           HERO
-        ========================================= */
+    margin-bottom: 55px;
+}
 
-        .hero {
-            background:
-                radial-gradient(
-                    circle at 85% 15%,
-                    rgba(184,223,53,.18),
-                    transparent 25%
-                ),
-                linear-gradient(
-                    135deg,
-                    #064d2c,
-                    #087443
-                );
 
-            color: white;
+.logo-mark {
 
-            padding:
-                75px
-                20px
-                115px;
+    width: 105px;
+    height: 105px;
 
-            text-align: center;
+    border: 2px solid var(--yellow);
 
-            position: relative;
-            overflow: hidden;
-        }
+    border-radius: 50%;
 
-        .hero::before {
-            content: "";
+    position: relative;
 
-            position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            width: 400px;
-            height: 400px;
+    gap: 0;
 
-            border:
-                70px solid
-                rgba(255,255,255,.035);
+    box-shadow:
+        0 0 20px rgba(245,196,0,.15),
+        inset 0 0 25px rgba(245,196,0,.05);
 
-            border-radius: 50%;
+    animation: logoSpin 3s linear infinite;
+}
 
-            left: -160px;
-            bottom: -220px;
-        }
+.logo-mark span {
 
-        .hero-content {
-            max-width: 850px;
-            margin: auto;
+    font-family: var(--font-display);
 
-            position: relative;
-            z-index: 2;
-        }
+    font-size: 50px;
+    font-weight: 900;
 
-        .hero-badge {
-            display: inline-flex;
+    line-height: 1;
 
-            padding:
-                8px
-                15px;
+    font-style: italic;
+}
 
-            border:
-                1px solid
-                rgba(255,255,255,.2);
+.logo-mark span:first-child {
+    color: var(--yellow);
+}
 
-            background:
-                rgba(255,255,255,.10);
+.logo-mark span:nth-child(2) {
+    color: #aaa;
+}
 
-            border-radius: 100px;
+.logo-bar {
 
-            font-size: 13px;
+    position: absolute;
 
-            margin-bottom: 20px;
-        }
+    width: 135px;
+    height: 4px;
 
-        .hero h1 {
-            font-size:
-                clamp(
-                    35px,
-                    6vw,
-                    60px
-                );
+    background: var(--yellow);
 
-            line-height: 1.08;
+    left: -15px;
 
-            margin-bottom: 20px;
-        }
+    box-shadow: 0 0 15px var(--yellow);
+}
 
-        .hero h1 span {
-            color: var(--lime);
-        }
 
-        .hero p {
-            max-width: 680px;
+.weight {
 
-            margin: auto;
+    position: absolute;
 
-            color:
-                rgba(255,255,255,.82);
+    display: flex;
+    gap: 3px;
 
-            font-size: 17px;
-        }
+    height: 32px;
 
-        /* =========================================
-           FORM WRAPPER
-        ========================================= */
+    align-items: center;
+}
 
-        .form-wrapper {
-            max-width: 920px;
+.weight i {
 
-            margin:
-                -55px
-                auto
-                70px;
+    display: block;
 
-            padding:
-                0
-                20px;
+    width: 5px;
+    height: 25px;
 
-            position: relative;
-            z-index: 20;
-        }
+    background: var(--yellow);
+}
 
-        .form-card {
-            background: white;
+.weight i:nth-child(2) {
+    height: 32px;
+}
 
-            border-radius: 22px;
+.left-weight {
+    left: -25px;
+}
 
-            box-shadow: var(--shadow);
+.right-weight {
+    right: -25px;
+}
 
-            border:
-                1px solid
-                var(--border);
 
-            overflow: hidden;
-        }
+@keyframes logoSpin {
 
-        /* =========================================
-           FORM HEADER
-        ========================================= */
+    0% {
+        transform: rotate(0deg);
+    }
 
-        .form-header {
-            padding: 32px;
+    100% {
+        transform: rotate(360deg);
+    }
 
-            border-bottom:
-                1px solid
-                var(--border);
-        }
+}
 
-        .form-header h2 {
-            font-size: 26px;
-            margin-bottom: 6px;
-        }
 
-        .form-header p {
-            color: var(--text);
-            font-size: 14px;
-        }
+.loader-brand {
 
-        .required-note {
-            margin-top: 12px;
+    margin-top: 25px;
 
-            color: var(--text);
+    display: flex;
+    flex-direction: column;
+}
 
-            font-size: 12px;
-        }
+.loader-brand strong {
 
-        .required-note span {
-            color: var(--danger);
-        }
+    font-family: var(--font-display);
 
-        /* =========================================
-           FORM BODY
-        ========================================= */
+    font-size: 48px;
 
-        form {
-            padding: 35px;
-        }
+    letter-spacing: 5px;
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+    color: var(--yellow);
 
-            margin-bottom: 22px;
-            margin-top: 12px;
-        }
+    font-weight: 900;
+}
 
-        .section-number {
-            width: 34px;
-            height: 34px;
+.loader-brand span {
 
-            border-radius: 10px;
+    font-size: 12px;
 
-            background: var(--green-light);
-            color: var(--green);
+    letter-spacing: 9px;
 
-            display: grid;
-            place-items: center;
+    color: #aaa;
 
-            font-size: 13px;
-            font-weight: 800;
-        }
+    margin-left: 8px;
+}
 
-        .section-title h3 {
-            font-size: 17px;
-        }
 
-        .section-title p {
-            color: var(--text);
-            font-size: 12px;
-        }
+.loader-line {
 
-        .form-grid {
-            display: grid;
+    width: 100%;
+    height: 3px;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+    background: #242424;
 
-            gap: 22px;
+    position: relative;
 
-            margin-bottom: 32px;
-        }
+    overflow: hidden;
+}
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
+.loader-line span {
 
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
+    position: absolute;
+    left: 0;
+    top: 0;
 
-        label {
-            font-size: 13px;
-            font-weight: 700;
+    width: 0%;
+    height: 100%;
 
-            margin-bottom: 8px;
+    background: var(--yellow);
 
-            color: var(--dark);
-        }
+    box-shadow: 0 0 15px var(--yellow);
 
-        .required {
-            color: var(--danger);
-        }
+    transition: width .1s linear;
+}
 
-        input,
-        select,
-        textarea {
-            width: 100%;
 
-            padding:
-                13px
-                14px;
+.loader-info {
 
-            border:
-                1px solid
-                var(--border);
+    display: flex;
+    justify-content: space-between;
 
-            border-radius: 10px;
+    margin-top: 15px;
 
-            outline: none;
+    font-size: 9px;
 
-            background: #fbfdfc;
+    letter-spacing: 2px;
 
-            color: var(--dark);
+    color: #777;
+}
 
-            transition:
-                .2s ease;
-        }
+.loader-info strong {
+    color: var(--yellow);
+}
 
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color:
-                var(--green);
 
-            background: white;
+.loader-corner {
 
-            box-shadow:
-                0 0 0 3px
-                rgba(8,116,67,.08);
-        }
+    position: absolute;
 
-        textarea {
-            min-height: 110px;
-            resize: vertical;
-        }
+    width: 70px;
+    height: 70px;
 
-        .help-text {
-            margin-top: 6px;
+    border-color: var(--yellow);
 
-            font-size: 11px;
+    opacity: .7;
+}
 
-            color:
-                #809088;
-        }
+.top-left {
 
-        /* =========================================
-           CHECKBOXES
-        ========================================= */
+    top: 30px;
+    left: 30px;
 
-        .checkbox-group {
-            display: grid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+}
 
-            grid-template-columns:
-                repeat(2, 1fr);
+.top-right {
 
-            gap: 10px;
-        }
+    top: 30px;
+    right: 30px;
 
-        .checkbox-option {
-            display: flex;
-            align-items: center;
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
 
-            gap: 9px;
+.bottom-left {
 
-            padding: 12px;
+    bottom: 30px;
+    left: 30px;
 
-            background: #f8fbf9;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+}
 
-            border:
-                1px solid
-                var(--border);
+.bottom-right {
 
-            border-radius: 9px;
+    bottom: 30px;
+    right: 30px;
 
-            cursor: pointer;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
 
-            transition: .2s ease;
-        }
 
-        .checkbox-option:hover {
-            border-color:
-                var(--green);
-        }
+/* =========================================================
+   HEADER
+========================================================= */
 
-        .checkbox-option input {
-            width: auto;
+.header {
 
-            accent-color:
-                var(--green);
-        }
+    position: fixed;
 
-        .checkbox-option span {
-            font-size: 13px;
-        }
+    top: 0;
+    left: 0;
+    width: 100%;
 
-        /* =========================================
-           CONSENT
-        ========================================= */
+    z-index: 1000;
 
-        .consent-box {
-            background:
-                var(--green-light);
+    padding: 18px 0;
 
-            border:
-                1px solid
-                #ccebd9;
+    transition: var(--transition);
+}
 
-            border-radius: 13px;
+.header.scrolled {
 
-            padding: 18px;
+    background: rgba(5,5,5,.96);
 
-            display: flex;
+    backdrop-filter: blur(15px);
 
-            gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
 
-            align-items: flex-start;
-        }
+    padding: 12px 0;
+}
 
-        .consent-box input {
-            width: auto;
-            margin-top: 4px;
 
-            accent-color:
-                var(--green);
-        }
+.nav-container {
 
-        .consent-box label {
-            margin: 0;
+    display: flex;
 
-            font-size: 13px;
+    align-items: center;
 
-            font-weight: 500;
+    justify-content: space-between;
 
-            color:
-                #315044;
-        }
+    gap: 30px;
+}
 
-        /* =========================================
-           SUBMIT
-        ========================================= */
 
-        .submit-area {
-            margin-top: 30px;
+.brand {
 
-            padding-top: 28px;
+    display: flex;
 
-            border-top:
-                1px solid
-                var(--border);
-        }
+    align-items: center;
 
-        .submit-button {
-            width: 100%;
+    gap: 10px;
 
-            border: none;
+    flex-shrink: 0;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--green),
-                    #0a8950
-                );
 
-            color: white;
+.brand-icon {
 
-            padding: 16px;
+    width: 42px;
+    height: 42px;
 
-            border-radius: 11px;
+    border: 2px solid var(--yellow);
 
-            font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            cursor: pointer;
+    font-family: var(--font-display);
 
-            font-size: 15px;
+    font-size: 21px;
 
-            transition:
-                transform .2s ease,
-                box-shadow .2s ease;
-        }
+    font-weight: 900;
 
-        .submit-button:hover {
-            transform:
-                translateY(-2px);
+    color: var(--yellow);
 
-            box-shadow:
-                0 10px 25px
-                rgba(8,116,67,.20);
-        }
+    transform: skew(-8deg);
+}
 
-        .submit-button:disabled {
-            opacity: .65;
-            cursor: not-allowed;
-            transform: none;
-        }
 
-        .privacy-note {
-            text-align: center;
+.brand-text {
 
-            color: var(--text);
+    display: flex;
+    flex-direction: column;
+}
 
-            font-size: 11px;
+.brand-text strong {
 
-            margin-top: 12px;
-        }
+    font-family: var(--font-display);
 
-        /* =========================================
-           SUCCESS MESSAGE
-        ========================================= */
+    font-size: 23px;
 
-        .success-screen {
-            display: none;
+    letter-spacing: 2px;
 
-            padding:
-                65px
-                30px;
+    line-height: .8;
+}
 
-            text-align: center;
-        }
+.brand-text span {
 
-        .success-icon {
-            width: 80px;
-            height: 80px;
+    color: var(--yellow);
 
-            margin:
-                0 auto
-                22px;
+    font-size: 8px;
 
-            background:
-                var(--green-light);
+    letter-spacing: 4px;
 
-            color:
-                var(--green);
+    margin-top: 5px;
+}
 
-            border-radius: 50%;
 
-            display: grid;
-            place-items: center;
+.nav {
 
-            font-size: 38px;
-        }
+    display: flex;
 
-        .success-screen h2 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
+    align-items: center;
 
-        .success-screen p {
-            max-width: 600px;
-            margin: auto;
+    gap: 27px;
+}
 
-            color:
-                var(--text);
 
-            font-size: 15px;
-        }
+.nav-link {
 
-        .success-highlight {
-            margin:
-                25px
-                auto
-                0;
+    font-size: 11px;
 
-            max-width: 600px;
+    font-weight: 700;
 
-            padding: 18px;
+    letter-spacing: 1px;
 
-            background:
-                var(--green-light);
+    color: #bbb;
 
-            border-radius: 12px;
+    position: relative;
 
-            color:
-                var(--green);
+    transition: var(--transition);
+}
 
-            font-weight: 600;
-        }
+.nav-link:hover,
+.nav-link.active {
+    color: var(--yellow);
+}
 
-        /* =========================================
-           FOOTER
-        ========================================= */
 
-        footer {
-            background:
-                #062c1b;
+.nav-link::after {
 
-            color: white;
+    content: "";
 
-            padding:
-                45px
-                6%
-                25px;
-        }
+    position: absolute;
 
-        .footer-content {
-            max-width: 920px;
-            margin: auto;
+    left: 0;
+    bottom: -8px;
 
-            display: grid;
+    width: 0;
+    height: 2px;
 
-            grid-template-columns:
-                1.5fr
-                1fr
-                1fr;
+    background: var(--yellow);
 
-            gap: 40px;
-        }
+    transition: var(--transition);
+}
 
-        footer h3 {
-            margin-bottom: 12px;
-        }
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
 
-        footer p,
-        footer a {
-            color:
-                rgba(255,255,255,.65);
 
-            font-size: 13px;
-        }
+.nav-cta {
 
-        footer a {
-            display: block;
-            margin-bottom: 8px;
-            text-decoration: none;
-        }
+    background: var(--yellow);
 
-        .footer-bottom {
-            max-width: 920px;
+    color: #000;
 
-            margin:
-                35px
-                auto
-                0;
+    padding: 13px 18px;
 
-            padding-top: 18px;
+    font-size: 10px;
 
-            border-top:
-                1px solid
-                rgba(255,255,255,.1);
+    font-weight: 900;
 
-            color:
-                rgba(255,255,255,.45);
+    letter-spacing: 1px;
 
-            font-size: 11px;
-        }
+    transition: var(--transition);
 
-        /* =========================================
-           RESPONSIVE
-        ========================================= */
+    white-space: nowrap;
+}
 
-        @media(max-width: 750px) {
+.nav-cta:hover {
 
-            .nav-links {
-                display: none;
-            }
+    background: var(--white);
 
-            .mobile-menu {
-                display: block;
-            }
+    transform: translateY(-2px);
+}
 
-            .hero {
-                padding:
-                    60px
-                    20px
-                    100px;
-            }
+.nav-cta i {
+    margin-left: 7px;
+}
 
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
 
-            .form-group.full {
-                grid-column: auto;
-            }
+.menu-btn {
 
-            .checkbox-group {
-                grid-template-columns: 1fr;
-            }
+    display: none;
 
-            form {
-                padding: 24px;
-            }
+    width: 42px;
+    height: 42px;
 
-            .form-header {
-                padding: 25px;
-            }
+    background: transparent;
 
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
+    border: 1px solid #444;
 
-        @media(max-width: 480px) {
+    flex-direction: column;
 
-            .form-wrapper {
-                padding: 0 10px;
-            }
+    justify-content: center;
 
-            .hero h1 {
-                font-size: 37px;
-            }
+    align-items: center;
 
-            .hero p {
-                font-size: 15px;
-            }
+    gap: 5px;
+}
 
-            .success-screen {
-                padding:
-                    50px
-                    20px;
-            }
-        }
+.menu-btn span {
 
-    </style>
+    width: 20px;
+    height: 2px;
+
+    background: var(--white);
+
+    transition: var(--transition);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #050505;
+}
+
+
+.hero-bg {
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=2000&q=90");
+
+    background-size: cover;
+
+    background-position: center;
+
+    transform: scale(1.04);
+
+    animation: heroZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+
+    from {
+        transform: scale(1.04);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #050505 0%,
+            rgba(5,5,5,.92) 32%,
+            rgba(5,5,5,.35) 75%,
+            rgba(5,5,5,.65) 100%
+        );
+}
+
+
+.hero-grid {
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .08;
+
+    background-image:
+        linear-gradient(#fff 1px, transparent 1px),
+        linear-gradient(90deg, #fff 1px, transparent 1px);
+
+    background-size: 80px 80px;
+
+    mask-image: linear-gradient(
+        90deg,
+        black,
+        transparent
+    );
+}
+
+
+.hero-container {
+
+    position: relative;
+    z-index: 2;
+
+    padding-top: 100px;
+
+}
+
+
+.hero-content {
+
+    width: min(650px, 100%);
+
+    padding-bottom: 70px;
+}
+
+
+.eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--yellow);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+.eyebrow span {
+
+    width: 35px;
+    height: 2px;
+
+    background: var(--yellow);
+}
+
+
+.hero h1 {
+
+    font-family: var(--font-display);
+
+    font-size: clamp(65px, 9vw, 125px);
+
+    line-height: .82;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color: var(--yellow);
+
+    text-shadow:
+        0 0 25px rgba(245,196,0,.12);
+}
+
+
+.hero p {
+
+    max-width: 540px;
+
+    color: #bbb;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    margin-bottom: 35px;
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    padding: 17px 25px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+    transition: var(--transition);
+
+    border: 1px solid transparent;
+}
+
+
+.btn-primary {
+
+    background: var(--yellow);
+
+    color: #000;
+
+    box-shadow:
+        0 10px 30px rgba(245,196,0,.12);
+}
+
+.btn-primary:hover {
+
+    background: var(--white);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.3);
+}
+
+
+.btn-outline {
+
+    border-color: #555;
+
+    background: rgba(0,0,0,.25);
+
+    color: white;
+}
+
+.btn-outline:hover {
+
+    border-color: var(--yellow);
+
+    color: var(--yellow);
+
+    transform: translateY(-3px);
+}
+
+
+.hero-socials {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 40px;
+
+    color: #777;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.hero-socials a {
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #444;
+
+    color: white;
+
+    transition: var(--transition);
+}
+
+.hero-socials a:hover {
+
+    background: var(--yellow);
+
+    border-color: var(--yellow);
+
+    color: black;
+}
+
+
+.hero-scroll {
+
+    position: absolute;
+
+    right: 0;
+    bottom: 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #777;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+.scroll-line {
+
+    width: 1px;
+    height: 60px;
+
+    background: linear-gradient(
+        var(--yellow),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+
+    background: var(--yellow);
+
+    color: #000;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+}
+
+
+.stat-item {
+
+    padding: 25px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    border-right: 1px solid rgba(0,0,0,.15);
+}
+
+.stat-item:last-child {
+    border-right: 0;
+}
+
+.stat-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #000;
+
+    color: var(--yellow);
+
+    border-radius: 50%;
+}
+
+.stat-item strong {
+
+    display: block;
+
+    font-family: var(--font-display);
+
+    font-size: 35px;
+
+    line-height: .8;
+}
+
+.stat-item > div:last-child span {
+
+    display: block;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-top: 7px;
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.section {
+
+    padding: 110px 0;
+}
+
+.dark-section {
+
+    background:
+        linear-gradient(
+            180deg,
+            #080808,
+            #111
+        );
+}
+
+
+.section-heading {
+
+    text-align: center;
+
+    max-width: 650px;
+
+    margin: 0 auto 60px;
+}
+
+.section-tag {
+
+    color: var(--yellow);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+}
+
+.section-heading h2,
+.about-content h2,
+.contact-content h2,
+.cta-content h2 {
+
+    font-family: var(--font-display);
+
+    font-size: clamp(48px, 6vw, 75px);
+
+    line-height: .85;
+
+    font-weight: 900;
+}
+
+.section-heading h2 span,
+.about-content h2 span,
+.contact-content h2 span,
+.cta-content h2 span {
+
+    color: var(--yellow);
+
+    display: block;
+}
+
+.section-heading p {
+
+    margin-top: 20px;
+
+    color: #888;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+
+.about-images {
+
+    position: relative;
+
+    padding-right: 70px;
+}
+
+
+.about-main-image {
+
+    height: 550px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.about-main-image img {
+    height: 100%;
+}
+
+
+.about-main-image::after {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            rgba(0,0,0,.6)
+        );
+}
+
+
+.image-label {
+
+    position: absolute;
+
+    bottom: 25px;
+    left: 25px;
+
+    z-index: 2;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+}
+
+.image-label span {
+
+    color: var(--yellow);
+
+    margin-right: 8px;
+}
+
+
+.about-small-image {
+
+    position: absolute;
+
+    width: 230px;
+    height: 280px;
+
+    right: 0;
+    bottom: -40px;
+
+    border: 8px solid var(--black);
+
+    z-index: 3;
+}
+
+.about-small-image img {
+    height: 100%;
+}
+
+
+.experience-badge {
+
+    position: absolute;
+
+    left: -35px;
+    top: 40px;
+
+    width: 120px;
+    height: 120px;
+
+    background: var(--yellow);
+
+    color: black;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 4;
+}
+
+.experience-badge strong {
+
+    font-family: var(--font-display);
+
+    font-size: 50px;
+
+    line-height: .8;
+}
+
+.experience-badge span {
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    margin-top: 7px;
+}
+
+
+.about-content h2 {
+
+    margin-bottom: 25px;
+}
+
+
+.about-content p {
+
+    color: #8f8f8f;
+
+    line-height: 1.8;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+.about-content .lead {
+
+    color: #ccc;
+
+    font-size: 15px;
+}
+
+
+.about-features {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 17px;
+
+    margin: 30px 0;
+}
+
+
+.about-features div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 10px;
+
+    color: #aaa;
+}
+
+.about-features i {
+    color: var(--yellow);
+}
+
+
+.text-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--yellow);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    margin-top: 10px;
+}
+
+.text-link i {
+    transition: var(--transition);
+}
+
+.text-link:hover i {
+    transform: translateX(7px);
+}
+
+
+/* =========================================================
+   PROGRAMS
+========================================================= */
+
+.program-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.program-card {
+
+    background: #161616;
+
+    border: 1px solid #252525;
+
+    transition: var(--transition);
+
+    overflow: hidden;
+}
+
+.program-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: var(--yellow);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.3);
+}
+
+
+.program-image {
+
+    height: 230px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.program-image img {
+
+    height: 100%;
+
+    transition: .7s ease;
+}
+
+.program-card:hover .program-image img {
+    transform: scale(1.08);
+}
+
+
+.program-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.7)
+        );
+}
+
+
+.program-number {
+
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    z-index: 2;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--yellow);
+
+    color: #000;
+
+    font-family: var(--font-display);
+
+    font-weight: 900;
+}
+
+
+.program-content {
+
+    padding: 25px;
+}
+
+.program-content > span {
+
+    color: var(--yellow);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    font-weight: 900;
+}
+
+.program-content h3 {
+
+    font-family: var(--font-display);
+
+    font-size: 28px;
+
+    text-transform: uppercase;
+
+    margin: 7px 0 10px;
+}
+
+.program-content p {
+
+    color: #777;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+.program-content a {
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.program-content a:hover {
+    color: var(--yellow);
+}
+
+.program-content a i {
+    margin-left: 8px;
+}
+
+
+/* =========================================================
+   TRAINERS
+========================================================= */
+
+.trainer-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.trainer-card {
+
+    background: #111;
+
+    border: 1px solid #222;
+
+    transition: var(--transition);
+}
+
+.trainer-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: var(--yellow);
+}
+
+
+.trainer-image {
+
+    height: 430px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.trainer-image img {
+
+    height: 100%;
+
+    filter: grayscale(25%);
+
+    transition: .6s ease;
+}
+
+.trainer-card:hover img {
+
+    transform: scale(1.05);
+
+    filter: grayscale(0);
+}
+
+
+.trainer-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 50%,
+            rgba(0,0,0,.8)
+        );
+}
+
+
+.trainer-socials {
+
+    position: absolute;
+
+    right: 15px;
+    top: 15px;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.trainer-socials a {
+
+    width: 34px;
+    height: 34px;
+
+    background: rgba(0,0,0,.75);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: var(--transition);
+}
+
+.trainer-socials a:hover {
+
+    background: var(--yellow);
+
+    color: black;
+}
+
+
+.trainer-info {
+
+    padding: 20px 23px 25px;
+}
+
+.trainer-info span {
+
+    font-size: 8px;
+
+    color: var(--yellow);
+
+    letter-spacing: 2px;
+
+    font-weight: 900;
+}
+
+.trainer-info h3 {
+
+    font-family: var(--font-display);
+
+    font-size: 27px;
+
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section {
+
+    min-height: 430px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+.cta-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=2000&q=85");
+
+    background-size: cover;
+
+    background-position: center;
+
+    filter: grayscale(100%);
+}
+
+
+.cta-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #050505 5%,
+            rgba(5,5,5,.8),
+            rgba(5,5,5,.3)
+        );
+}
+
+
+.cta-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.cta-content h2 {
+
+    max-width: 650px;
+
+    font-size: clamp(50px, 6vw, 80px);
+}
+
+.cta-content p {
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+.pricing-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    align-items: stretch;
+}
+
+
+.price-card {
+
+    background: #161616;
+
+    border: 1px solid #292929;
+
+    padding: 35px 30px;
+
+    position: relative;
+
+    transition: var(--transition);
+}
+
+.price-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #555;
+}
+
+
+.price-card.featured {
+
+    border: 2px solid var(--yellow);
+
+    background:
+        linear-gradient(
+            145deg,
+            #191919,
+            #101010
+        );
+}
+
+
+.popular {
+
+    position: absolute;
+
+    top: 0;
+    right: 25px;
+
+    padding: 7px 12px;
+
+    background: var(--yellow);
+
+    color: #000;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.price-top span {
+
+    color: var(--yellow);
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.price-top h3 {
+
+    font-family: var(--font-display);
+
+    font-size: 40px;
+
+    margin: 7px 0;
+}
+
+.price-top p {
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+.price {
+
+    font-family: var(--font-display);
+
+    font-size: 48px;
+
+    font-weight: 900;
+
+    margin: 30px 0;
+
+    border-top: 1px solid #292929;
+
+    border-bottom: 1px solid #292929;
+
+    padding: 20px 0;
+}
+
+.price small {
+
+    color: var(--yellow);
+
+    font-size: 20px;
+}
+
+.price span {
+
+    font-family: var(--font-body);
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+.price-card ul {
+
+    list-style: none;
+
+    margin-bottom: 30px;
+}
+
+.price-card li {
+
+    display: flex;
+
+    gap: 10px;
+
+    color: #aaa;
+
+    font-size: 10px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid #222;
+}
+
+.price-card li i {
+    color: var(--yellow);
+}
+
+
+.price-btn {
+
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 15px;
+
+    border: 1px solid #555;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition: var(--transition);
+}
+
+.price-btn:hover,
+.featured .price-btn {
+
+    background: var(--yellow);
+
+    color: #000;
+
+    border-color: var(--yellow);
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-grid {
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+
+    grid-template-rows: 270px 270px;
+
+    gap: 8px;
+}
+
+
+.gallery-item {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #111;
+}
+
+
+.gallery-item.large {
+
+    grid-row: span 2;
+}
+
+
+.gallery-item img {
+
+    height: 100%;
+
+    transition: .7s ease;
+
+    filter: grayscale(25%);
+}
+
+
+.gallery-item:hover img {
+
+    transform: scale(1.08);
+
+    filter: grayscale(0);
+}
+
+
+.gallery-overlay {
+
+    position: absolute;
+
+    left: 20px;
+    bottom: 20px;
+
+    z-index: 2;
+
+    font-family: var(--font-display);
+
+    font-weight: 900;
+
+    font-size: 20px;
+}
+
+.gallery-overlay span {
+
+    color: var(--yellow);
+
+    font-size: 10px;
+
+    margin-right: 5px;
+}
+
+
+.gallery-item::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 45%,
+            rgba(0,0,0,.75)
+        );
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+.testimonial-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.testimonial {
+
+    background: #161616;
+
+    padding: 35px;
+
+    border: 1px solid #242424;
+
+    transition: var(--transition);
+}
+
+.testimonial:hover {
+
+    border-color: var(--yellow);
+
+    transform: translateY(-5px);
+}
+
+
+.quote {
+
+    font-family: Georgia, serif;
+
+    color: var(--yellow);
+
+    font-size: 55px;
+
+    line-height: .5;
+
+    margin-bottom: 20px;
+}
+
+
+.testimonial > p {
+
+    color: #999;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+.testimonial-author {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border-top: 1px solid #292929;
+
+    padding-top: 20px;
+}
+
+.author-avatar {
+
+    width: 38px;
+    height: 38px;
+
+    background: var(--yellow);
+
+    color: #000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-display);
+
+    font-weight: 900;
+}
+
+.testimonial-author strong {
+
+    display: block;
+
+    font-size: 10px;
+}
+
+.testimonial-author span {
+
+    display: block;
+
+    color: var(--yellow);
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+
+    background: #0b0b0b;
+}
+
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns: .9fr 1.1fr;
+
+    gap: 90px;
+
+    align-items: start;
+}
+
+
+.contact-content h2 {
+
+    margin-bottom: 25px;
+}
+
+.contact-content > p {
+
+    color: #888;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    max-width: 480px;
+}
+
+
+.contact-details {
+
+    margin-top: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+.contact-detail {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.contact-icon {
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #191919;
+
+    color: var(--yellow);
+}
+
+.contact-detail span {
+
+    display: block;
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+.contact-detail strong {
+
+    font-size: 11px;
+
+    color: #ddd;
+}
+
+
+.social-large {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-top: 35px;
+
+    border-top: 1px solid #222;
+
+    padding-top: 25px;
+}
+
+.social-large > span {
+
+    width: 100%;
+
+    font-size: 8px;
+
+    color: #666;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+.social-large a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 10px 14px;
+
+    border: 1px solid #333;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.social-large a:hover {
+
+    background: var(--yellow);
+
+    color: #000;
+
+    border-color: var(--yellow);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.contact-form-wrapper {
+
+    background: #151515;
+
+    border: 1px solid #292929;
+
+    padding: 40px;
+}
+
+
+.form-header {
+
+    border-bottom: 1px solid #292929;
+
+    padding-bottom: 25px;
+
+    margin-bottom: 30px;
+}
+
+.form-header span {
+
+    color: var(--yellow);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    font-weight: 900;
+}
+
+.form-header h3 {
+
+    font-family: var(--font-display);
+
+    font-size: 35px;
+
+    margin-top: 5px;
+}
+
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+
+.form-group {
+
+    margin-bottom: 18px;
+}
+
+.form-group label {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 8px;
+}
+
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+
+    width: 100%;
+
+    background: #0c0c0c;
+
+    border: 1px solid #292929;
+
+    color: white;
+
+    padding: 14px;
+
+    outline: none;
+
+    font-size: 11px;
+
+    transition: var(--transition);
+}
+
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 100px;
+}
+
+
+.form-group select {
+
+    appearance: none;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+
+    border-color: var(--yellow);
+
+    box-shadow:
+        0 0 0 2px rgba(245,196,0,.05);
+}
+
+
+.form-btn {
+
+    width: 100%;
+
+    border: 0;
+}
+
+
+.form-message {
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color: var(--yellow);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    background: #050505;
+
+    border-top: 1px solid #202020;
+
+    padding-top: 70px;
+}
+
+
+.footer-top {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+
+    gap: 50px;
+
+    padding-bottom: 50px;
+}
+
+
+.footer-brand p {
+
+    color: #666;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+    margin-top: 20px;
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.footer h4 {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: var(--yellow);
+
+    margin-bottom: 10px;
+}
+
+
+.footer-links a {
+
+    color: #777;
+
+    font-size: 10px;
+
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+
+.footer-newsletter p {
+
+    color: #777;
+
+    font-size: 10px;
+
+    margin-bottom: 20px;
+}
+
+
+.footer-bottom {
+
+    border-top: 1px solid #1d1d1d;
+
+    padding: 22px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #555;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top {
+
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 42px;
+    height: 42px;
+
+    background: var(--yellow);
+
+    color: #000;
+
+    border: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 500;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition: var(--transition);
+}
+
+.back-top.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.back-top:hover {
+
+    background: white;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .nav {
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 9px;
+    }
+
+    .program-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .nav {
+        position: fixed;
+
+        top: 0;
+        right: -100%;
+
+        width: 280px;
+        height: 100vh;
+
+        background: #0b0b0b;
+
+        border-left: 1px solid #222;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 100px 35px;
+
+        gap: 25px;
+
+        transition: .4s ease;
+    }
+
+    .nav.open {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 12px;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+
+    .menu-btn {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .menu-btn.open span:first-child {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-btn.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-btn.open span:last-child {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-item:nth-child(2) {
+        border-right: 0;
+    }
+
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2) {
+        border-bottom: 1px solid rgba(0,0,0,.15);
+    }
+
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 70px;
+    }
+
+
+    .about-images {
+        max-width: 650px;
+
+        margin: auto;
+
+        width: 100%;
+    }
+
+
+    .trainer-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .trainer-card:last-child {
+        grid-column: span 2;
+
+        max-width: 50%;
+
+        margin: auto;
+    }
+
+
+    .cta-content {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .section {
+        padding: 80px 0;
+    }
+
+
+    .hero h1 {
+        font-size: 65px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+
+    .hero-scroll {
+        display: none;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-item {
+
+        border-right: 0 !important;
+
+        border-bottom: 1px solid rgba(0,0,0,.15);
+
+        justify-content: flex-start;
+
+        padding: 20px 10%;
+    }
+
+
+    .stat-item:last-child {
+        border-bottom: 0;
+    }
+
+
+    .program-grid,
+    .trainer-grid,
+    .testimonial-grid,
+    .pricing-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .trainer-card:last-child {
+
+        grid-column: auto;
+
+        max-width: none;
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-rows: 230px 230px 230px;
+    }
+
+    .gallery-item.large {
+
+        grid-row: span 2;
+
+    }
+
+
+    .about-images {
+        padding-right: 35px;
+    }
+
+    .about-main-image {
+        height: 420px;
+    }
+
+    .about-small-image {
+        width: 150px;
+        height: 190px;
+    }
+
+    .experience-badge {
+        left: -10px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .experience-badge strong {
+        font-size: 35px;
+    }
+
+
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-wrapper {
+        padding: 25px;
+    }
+
+
+    .footer-top {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+
+    .footer-bottom {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        line-height: 1.5;
+    }
+
+
+    .loader-brand strong {
+        font-size: 35px;
+    }
+
+    .loader-brand span {
+        font-size: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   FIVE-PROGRAM GRID RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 1100px) {
+    .program-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .program-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .program-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+
 </head>
-
 
 <body>
 
+<!-- =========================================================
+     PRELOADER
+========================================================= -->
 
-<!-- =========================================
-     NAVBAR
-========================================= -->
+<div id="preloader">
 
-<nav class="navbar">
+    <div class="preloader-bg"></div>
 
-    <a href="#" class="logo">
+    <div class="loader-content">
 
-        <div class="logo-icon">
-            ♻
+        <div class="loader-logo">
+
+            <div class="logo-mark">
+                <span>D</span>
+                <span>P</span>
+
+                <div class="logo-bar"></div>
+
+                <div class="weight left-weight">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+
+                <div class="weight right-weight">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+            </div>
+
+            <div class="loader-brand">
+                <strong>DELPOSH</strong>
+                <span>FITNESS</span>
+            </div>
+
         </div>
 
-        OctaWealth
+        <div class="loader-line">
+            <span></span>
+        </div>
 
-    </a>
-
-
-    <div class="nav-links">
-
-        <a href="#">
-            Home
-        </a>
-
-        <a href="partners.html">
-            About
-        </a>
-
-        <a href="partners.html">
-            How It Works
-        </a>
-
-        <a href="partners.html">
-            School Portal
-        </a>
-
-        <a
-            href="#"
-            class="nav-button"
-        >
-            Register School
-        </a>
+        <div class="loader-info">
+            <span>PREPARING YOUR EXPERIENCE</span>
+            <strong id="loaderPercent">0%</strong>
+        </div>
 
     </div>
 
+    <div class="loader-corner top-left"></div>
+    <div class="loader-corner top-right"></div>
+    <div class="loader-corner bottom-left"></div>
+    <div class="loader-corner bottom-right"></div>
 
-    <button
-        class="mobile-menu"
-        onclick="toggleMobileMenu()"
-    >
-        ☰
-    </button>
-
-</nav>
+</div>
 
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-<!-- =========================================
+<header class="header" id="header">
+
+    <div class="container nav-container">
+
+        <a href="#home" class="brand">
+
+            <div class="brand-icon">
+                DP
+            </div>
+
+            <div class="brand-text">
+                <strong>DELPOSH</strong>
+                <span>FITNESS</span>
+            </div>
+
+        </a>
+
+
+        <nav class="nav" id="nav">
+
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#programs" class="nav-link">Programs</a>
+            <a href="#trainers" class="nav-link">Trainers</a>
+            <a href="#pricing" class="nav-link">Membership</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#contact" class="nav-link">Contact</a>
+
+        </nav>
+
+
+        <a href="#contact" class="nav-cta">
+            JOIN NOW
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
      HERO
-========================================= -->
+========================================================= -->
 
-<section class="hero">
+<main>
 
-    <div class="hero-content">
+<section class="hero" id="home">
 
-        <div class="hero-badge">
-            🌍 School Environmental Program
+    <div class="hero-bg"></div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-grid"></div>
+
+
+    <div class="container hero-container">
+
+        <div class="hero-content reveal">
+
+            <div class="eyebrow">
+                <span></span>
+                DISCIPLINE • DEDICATION • RESULTS
+            </div>
+
+            <h1>
+                BUILD YOUR
+                <span>BEST SELF.</span>
+            </h1>
+
+            <p>
+                Train harder. Move stronger. Live better.
+                Delposh Fitness gives you the environment,
+                coaching and community you need to become
+                your strongest self.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#pricing" class="btn btn-primary">
+                    START YOUR JOURNEY
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#programs" class="btn btn-outline">
+                    EXPLORE PROGRAMS
+                </a>
+
+            </div>
+
+
+            <div class="hero-socials">
+
+                <span>FOLLOW THE MOVEMENT</span>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+            </div>
+
         </div>
 
-        <h1>
 
-            Turn Plastic Waste Into
-            <span>Impact.</span>
+        <div class="hero-scroll">
 
-        </h1>
+            <span>SCROLL</span>
 
-        <p>
+            <div class="scroll-line"></div>
 
-            Register your school to participate in our
-            PET bottle collection initiative — helping
-            create cleaner communities while supporting
-            educational opportunities for students.
-
-        </p>
+        </div>
 
     </div>
 
 </section>
 
 
+<!-- =========================================================
+     STATS
+========================================================= -->
 
-<!-- =========================================
-     FORM
-========================================= -->
+<section class="stats">
 
-<section class="form-wrapper">
+    <div class="container stats-grid">
 
-    <div class="form-card">
+        <div class="stat-item reveal">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-dumbbell"></i>
+            </div>
+
+            <div>
+                <strong>
+                    <span class="counter" data-target="500">0</span>+
+                </strong>
+
+                <span>ACTIVE MEMBERS</span>
+            </div>
+
+        </div>
 
 
-        <!-- FORM HEADER -->
+        <div class="stat-item reveal">
 
-        <div class="form-header">
+            <div class="stat-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
 
-            <h2>
-                School Registration
-            </h2>
+            <div>
+                <strong>
+                    <span class="counter" data-target="8">0</span>+
+                </strong>
 
-            <p>
-                Join our growing network of schools
-                making a difference through recycling.
-            </p>
+                <span>YEARS EXPERIENCE</span>
+            </div>
 
-            <div class="required-note">
+        </div>
 
-                <span>*</span>
-                Indicates a required field.
+
+        <div class="stat-item reveal">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+
+            <div>
+                <strong>
+                    <span class="counter" data-target="15">0</span>+
+                </strong>
+
+                <span>EXPERT TRAINERS</span>
+            </div>
+
+        </div>
+
+
+        <div class="stat-item reveal">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <div>
+                <strong>
+                    <span class="counter" data-target="98">0</span>%
+                </strong>
+
+                <span>MEMBER SATISFACTION</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="about section" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-images reveal">
+
+            <div class="about-main-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1000&q=85"
+                    alt="Athlete training at Delposh Fitness"
+                 loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                <div class="image-label">
+                    <span>01</span>
+                    TRAIN WITH PURPOSE
+                </div>
+
+            </div>
+
+
+            <div class="about-small-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85"
+                    alt="Modern fitness gym"
+                 loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+            </div>
+
+
+            <div class="experience-badge">
+
+                <strong>08</strong>
+
+                <span>
+                    YEARS OF
+                    <br>
+                    EXCELLENCE
+                </span>
 
             </div>
 
         </div>
 
 
+        <div class="about-content reveal">
 
-        <!-- REGISTRATION FORM -->
+            <div class="section-tag">
+                ABOUT DELPOSH
+            </div>
 
-        <form
-            id="schoolRegistrationForm"
-        >
+            <h2>
+                MORE THAN A GYM.
+                <span>WE BUILD PEOPLE.</span>
+            </h2>
+
+            <p class="lead">
+                Delposh Fitness is a community built around one simple
+                belief — everyone deserves the opportunity to become
+                stronger, healthier and more confident.
+            </p>
+
+            <p>
+                Whether your goal is building muscle, losing weight,
+                improving your fitness or simply becoming healthier,
+                our team is here to help you every step of the way.
+            </p>
 
 
-            <!-- =================================
-                 SECTION 1
-            ================================== -->
+            <div class="about-features">
 
-            <div class="section-title">
-
-                <div class="section-number">
-                    01
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Professional Training Environment</span>
                 </div>
 
                 <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Experienced Fitness Coaches</span>
+                </div>
 
-                    <h3>
-                        School Information
-                    </h3>
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Personalized Fitness Programs</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Supportive Fitness Community</span>
+                </div>
+
+            </div>
+
+
+            <a href="#contact" class="text-link">
+                DISCOVER DELPOSH
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROGRAMS
+========================================================= -->
+
+<section class="programs section dark-section" id="programs">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                WHAT WE OFFER
+            </div>
+
+            <h2>
+                TRAIN <span>YOUR WAY.</span>
+            </h2>
+
+            <p>
+                Find the training style that fits your goals,
+                your body and your lifestyle.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+
+            <article class="program-card reveal">
+
+                <div class="program-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+                        alt="Strength training"
+                     loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="program-number">01</div>
+
+                </div>
+
+                <div class="program-content">
+
+                    <span>STRENGTH</span>
+
+                    <h3>Strength Training</h3>
 
                     <p>
-                        Tell us about your school.
+                        Build lean muscle, increase strength
+                        and improve your overall performance.
                     </p>
+
+                    <a href="#contact">
+                        LEARN MORE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-card reveal">
+
+                <div class="program-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=85"
+                        alt="Cardio fitness training"
+                     loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="program-number">02</div>
+
+                </div>
+
+                <div class="program-content">
+
+                    <span>CARDIO</span>
+
+                    <h3>Cardio Fitness</h3>
+
+                    <p>
+                        Improve endurance, burn calories and
+                        build a stronger cardiovascular system.
+                    </p>
+
+                    <a href="#contact">
+                        LEARN MORE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-card reveal">
+
+                <div class="program-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=85"
+                        alt="HIIT workout"
+                     loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="program-number">03</div>
+
+                </div>
+
+                <div class="program-content">
+
+                    <span>HIGH INTENSITY</span>
+
+                    <h3>HIIT Workouts</h3>
+
+                    <p>
+                        Push your limits with fast-paced workouts
+                        designed for maximum results.
+                    </p>
+
+                    <a href="#contact">
+                        LEARN MORE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-card reveal">
+
+                <div class="program-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=900&q=85"
+                        alt="Yoga and flexibility"
+                     loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="program-number">04</div>
+
+                </div>
+
+                <div class="program-content">
+
+                    <span>MOBILITY</span>
+
+                    <h3>Yoga & Flexibility</h3>
+
+                    <p>
+                        Improve mobility, flexibility, balance
+                        and recovery.
+                    </p>
+
+                    <a href="#contact">
+                        LEARN MORE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-card reveal">
+
+                <div class="program-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=900&q=85"
+                        alt="Boxing and combat fitness training"
+                        loading="lazy"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="program-number">05</div>
+
+                </div>
+
+                <div class="program-content">
+
+                    <span>COMBAT</span>
+
+                    <h3>Boxing & Combat</h3>
+
+                    <p>
+                        Build confidence, burn calories and
+                        sharpen your speed, power and conditioning.
+                    </p>
+
+                    <a href="#contact">
+                        LEARN MORE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TRAINERS
+========================================================= -->
+
+<section class="trainers section" id="trainers">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                OUR TEAM
+            </div>
+
+            <h2>
+                TRAIN WITH THE <span>BEST.</span>
+            </h2>
+
+            <p>
+                Experienced coaches who understand your goals
+                and know how to help you achieve them.
+            </p>
+
+        </div>
+
+
+        <div class="trainer-grid">
+
+
+            <article class="trainer-card reveal">
+
+                <div class="trainer-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=85"
+                        alt="Fitness trainer"
+                     loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="trainer-socials">
+
+                        <a href="#">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="trainer-info">
+
+                    <span>STRENGTH COACH</span>
+
+                    <h3>YOUR TRAINER</h3>
+
+                </div>
+
+            </article>
+
+
+            <article class="trainer-card reveal">
+
+                <div class="trainer-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=85"
+                        alt="Female fitness trainer"
+                     loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="trainer-socials">
+
+                        <a href="#">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="trainer-info">
+
+                    <span>FITNESS COACH</span>
+
+                    <h3>YOUR TRAINER</h3>
+
+                </div>
+
+            </article>
+
+
+            <article class="trainer-card reveal">
+
+                <div class="trainer-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1584863231364-2edc166de9a1?auto=format&fit=crop&w=800&q=85"
+                        alt="Personal trainer"
+                     loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                    <div class="trainer-socials">
+
+                        <a href="#">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="trainer-info">
+
+                    <span>PERSONAL TRAINER</span>
+
+                    <h3>YOUR TRAINER</h3>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta-section">
+
+    <div class="cta-bg"></div>
+
+    <div class="cta-overlay"></div>
+
+    <div class="container cta-content reveal">
+
+        <div>
+
+            <div class="section-tag">
+                YOUR TIME IS NOW
+            </div>
+
+            <h2>
+                STOP WAITING.
+                <span>START TRAINING.</span>
+            </h2>
+
+            <p>
+                Your strongest version is waiting.
+                Let's build it together.
+            </p>
+
+        </div>
+
+        <a href="#contact" class="btn btn-primary">
+            JOIN DELPOSH
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRICING
+========================================================= -->
+
+<section class="pricing section dark-section" id="pricing">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                MEMBERSHIP
+            </div>
+
+            <h2>
+                CHOOSE YOUR <span>PLAN.</span>
+            </h2>
+
+            <p>
+                Flexible membership options designed to fit your
+                fitness goals.
+            </p>
+
+        </div>
+
+
+        <div class="pricing-grid">
+
+
+            <div class="price-card reveal">
+
+                <div class="price-top">
+
+                    <span>STARTER</span>
+
+                    <h3>Basic</h3>
+
+                    <p>
+                        Perfect for getting started.
+                    </p>
+
+                </div>
+
+                <div class="price">
+
+                    <small>₦</small>
+                    25,000
+                    <span>/ MONTH</span>
+
+                </div>
+
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Gym Access
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Basic Equipment
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Fitness Assessment
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Locker Access
+                    </li>
+
+                </ul>
+
+                <a href="#contact" class="price-btn">
+                    GET STARTED
+                </a>
+
+            </div>
+
+
+            <div class="price-card featured reveal">
+
+                <div class="popular">
+                    MOST POPULAR
+                </div>
+
+                <div class="price-top">
+
+                    <span>PRO</span>
+
+                    <h3>Performance</h3>
+
+                    <p>
+                        For serious fitness enthusiasts.
+                    </p>
+
+                </div>
+
+                <div class="price">
+
+                    <small>₦</small>
+                    40,000
+                    <span>/ MONTH</span>
+
+                </div>
+
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Unlimited Gym Access
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Group Training
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Monthly Assessment
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Nutrition Guidance
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Trainer Support
+                    </li>
+
+                </ul>
+
+                <a href="#contact" class="price-btn">
+                    JOIN NOW
+                </a>
+
+            </div>
+
+
+            <div class="price-card reveal">
+
+                <div class="price-top">
+
+                    <span>ELITE</span>
+
+                    <h3>Personal</h3>
+
+                    <p>
+                        Personalized training experience.
+                    </p>
+
+                </div>
+
+                <div class="price">
+
+                    <small>₦</small>
+                    75,000
+                    <span>/ MONTH</span>
+
+                </div>
+
+                <ul>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Everything in Pro
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Personal Trainer
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Personalized Program
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Nutrition Plan
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Weekly Progress Tracking
+                    </li>
+
+                </ul>
+
+                <a href="#contact" class="price-btn">
+                    GO ELITE
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section class="gallery section" id="gallery">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                INSIDE DELPOSH
+            </div>
+
+            <h2>
+                THE <span>GRIND.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item large reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85"
+                    alt="Fitness gym"
+                 loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                <div class="gallery-overlay">
+                    <span>01</span>
+                    TRAIN HARD
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=85"
+                    alt="Gym training"
+                 loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                <div class="gallery-overlay">
+                    <span>02</span>
+                    STAY STRONG
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+                    alt="Weight training"
+                 loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                <div class="gallery-overlay">
+                    <span>03</span>
+                    PUSH LIMITS
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517964603305-11c0f6f66012?auto=format&fit=crop&w=900&q=85"
+                    alt="Fitness workout"
+                 loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80';">
+
+                <div class="gallery-overlay">
+                    <span>04</span>
+                    NO EXCUSES
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TESTIMONIALS
+========================================================= -->
+
+<section class="testimonials section dark-section">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                MEMBER STORIES
+            </div>
+
+            <h2>
+                THEY <span>TRUST US.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="testimonial-grid">
+
+
+            <div class="testimonial reveal">
+
+                <div class="quote">
+                    "
+                </div>
+
+                <p>
+                    Delposh completely changed the way I approach
+                    fitness. The trainers are supportive and the
+                    environment keeps me motivated.
+                </p>
+
+                <div class="testimonial-author">
+
+                    <div class="author-avatar">
+                        A
+                    </div>
+
+                    <div>
+                        <strong>Member</strong>
+                        <span>DELPOSTH FITNESS</span>
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <div class="form-grid">
+            <div class="testimonial reveal">
+
+                <div class="quote">
+                    "
+                </div>
+
+                <p>
+                    I finally found a gym where I actually look
+                    forward to training. The atmosphere is amazing
+                    and the results speak for themselves.
+                </p>
+
+                <div class="testimonial-author">
+
+                    <div class="author-avatar">
+                        J
+                    </div>
+
+                    <div>
+                        <strong>Member</strong>
+                        <span>DELPOSTH FITNESS</span>
+                    </div>
+
+                </div>
+
+            </div>
 
 
-                <!-- 1 -->
+            <div class="testimonial reveal">
+
+                <div class="quote">
+                    "
+                </div>
+
+                <p>
+                    The combination of professional trainers,
+                    great equipment and community makes Delposh
+                    different from anywhere else I've trained.
+                </p>
+
+                <div class="testimonial-author">
+
+                    <div class="author-avatar">
+                        M
+                    </div>
+
+                    <div>
+                        <strong>Member</strong>
+                        <span>DELPOSTH FITNESS</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="contact section" id="contact">
+
+    <div class="container contact-grid">
+
+        <div class="contact-content reveal">
+
+            <div class="section-tag">
+                GET STARTED
+            </div>
+
+            <h2>
+                READY TO
+                <span>LEVEL UP?</span>
+            </h2>
+
+            <p>
+                Have questions about membership, personal training
+                or our programs? Get in touch with the Delposh team.
+            </p>
+
+
+            <div class="contact-details">
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <span>LOCATION</span>
+                        <strong>Delposh Fitness Gym</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+
+                    <div>
+                        <span>CALL US</span>
+                        <strong>+234 XXX XXX XXXX</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <div>
+                        <span>EMAIL</span>
+                        <strong>hello@delposhfitness.com</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="social-large">
+
+                <span>FOLLOW DELPOSH</span>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                    Instagram
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-tiktok"></i>
+                    TikTok
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-form-wrapper reveal">
+
+            <div class="form-header">
+
+                <span>JOIN THE COMMUNITY</span>
+
+                <h3>START YOUR JOURNEY</h3>
+
+            </div>
+
+
+            <form id="contactForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>FULL NAME</label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>PHONE</label>
+
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="+234..."
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
 
                 <div class="form-group">
 
-                    <label>
-                        School Name
-                        <span class="required">*</span>
-                    </label>
+                    <label>EMAIL ADDRESS</label>
 
                     <input
-                        type="text"
-                        name="schoolName"
-                        placeholder="Enter school name"
+                        type="email"
+                        name="email"
+                        placeholder="you@example.com"
                         required
                     >
 
                 </div>
 
 
-                <!-- 2 -->
-
                 <div class="form-group">
 
-                    <label>
-                        School Type
-                        <span class="required">*</span>
-                    </label>
+                    <label>WHAT ARE YOUR GOALS?</label>
 
-                    <select
-                        name="schoolType"
-                        required
-                    >
+                    <select name="goal">
 
-                        <option value="">
-                            Select school type
-                        </option>
-
-                        <option>
-                            Public Secondary School
-                        </option>
-
-                        <option>
-                            Private Secondary School
-                        </option>
-
-                        <option>
-                            University / College
-                        </option>
-
-                        <option>
-                            Other
-                        </option>
+                        <option value="">Select a goal</option>
+                        <option>Build Muscle</option>
+                        <option>Lose Weight</option>
+                        <option>Improve Fitness</option>
+                        <option>Personal Training</option>
+                        <option>General Wellness</option>
 
                     </select>
 
                 </div>
 
 
-                <!-- 3 -->
+                <div class="form-group">
 
-                <div class="form-group full">
-
-                    <label>
-                        School Address
-                        <span class="required">*</span>
-                    </label>
+                    <label>MESSAGE</label>
 
                     <textarea
-                        name="schoolAddress"
-                        placeholder="Enter the full school address"
-                        required
+                        name="message"
+                        rows="4"
+                        placeholder="Tell us a little about your fitness goals..."
                     ></textarea>
 
                 </div>
 
 
-                <!-- 4 -->
+                <button type="submit" class="btn btn-primary form-btn">
 
-                <div class="form-group">
+                    SEND INQUIRY
 
-                    <label>
-                        State
-                        <span class="required">*</span>
-                    </label>
-
-                    <select
-                        name="state"
-                        required
-                    >
-
-                        <option value="">
-                            Select state
-                        </option>
-
-                        <option>
-                            Abia
-                        </option>
-
-                        <option>
-                            Abuja (FCT)
-                        </option>
-
-                        <option>
-                            Adamawa
-                        </option>
-
-                        <option>
-                            Akwa Ibom
-                        </option>
-
-                        <option>
-                            Anambra
-                        </option>
-
-                        <option>
-                            Bauchi
-                        </option>
-
-                        <option>
-                            Bayelsa
-                        </option>
-
-                        <option>
-                            Benue
-                        </option>
-
-                        <option>
-                            Borno
-                        </option>
-
-                        <option>
-                            Cross River
-                        </option>
-
-                        <option>
-                            Delta
-                        </option>
-
-                        <option>
-                            Ebonyi
-                        </option>
-
-                        <option>
-                            Edo
-                        </option>
-
-                        <option>
-                            Ekiti
-                        </option>
-
-                        <option>
-                            Enugu
-                        </option>
-
-                        <option>
-                            Gombe
-                        </option>
-
-                        <option>
-                            Imo
-                        </option>
-
-                        <option>
-                            Jigawa
-                        </option>
-
-                        <option>
-                            Kaduna
-                        </option>
-
-                        <option>
-                            Kano
-                        </option>
-
-                        <option>
-                            Katsina
-                        </option>
-
-                        <option>
-                            Kebbi
-                        </option>
-
-                        <option>
-                            Kogi
-                        </option>
-
-                        <option>
-                            Kwara
-                        </option>
-
-                        <option>
-                            Lagos
-                        </option>
-
-                        <option>
-                            Nasarawa
-                        </option>
-
-                        <option>
-                            Niger
-                        </option>
-
-                        <option>
-                            Ogun
-                        </option>
-
-                        <option>
-                            Ondo
-                        </option>
-
-                        <option>
-                            Osun
-                        </option>
-
-                        <option>
-                            Oyo
-                        </option>
-
-                        <option>
-                            Plateau
-                        </option>
-
-                        <option>
-                            Rivers
-                        </option>
-
-                        <option>
-                            Sokoto
-                        </option>
-
-                        <option>
-                            Taraba
-                        </option>
-
-                        <option>
-                            Yobe
-                        </option>
-
-                        <option>
-                            Zamfara
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- 5 -->
-
-                <div class="form-group">
-
-                    <label>
-                        Local Government Area
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        name="lga"
-                        placeholder="Enter LGA"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- 6 -->
-
-                <div class="form-group">
-
-                    <label>
-                        Estimated Number of Students
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        name="studentCount"
-                        min="1"
-                        placeholder="e.g. 850"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 SECTION 2
-            ================================== -->
-
-            <div class="section-title">
-
-                <div class="section-number">
-                    02
-                </div>
-
-                <div>
-
-                    <h3>
-                        School Representative
-                    </h3>
-
-                    <p>
-                        Who will coordinate the program?
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <!-- 7 -->
-
-                <div class="form-group">
-
-                    <label>
-                        Representative's Full Name
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        name="representativeName"
-                        placeholder="Full name"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- 8 -->
-
-                <div class="form-group">
-
-                    <label>
-                        Representative's Position
-                        <span class="required">*</span>
-                    </label>
-
-                    <select
-                        name="representativePosition"
-                        required
-                    >
-
-                        <option value="">
-                            Select position
-                        </option>
-
-                        <option>
-                            Principal
-                        </option>
-
-                        <option>
-                            Vice Principal
-                        </option>
-
-                        <option>
-                            Teacher
-                        </option>
-
-                        <option>
-                            Administrator
-                        </option>
-
-                        <option>
-                            Environmental / Health Officer
-                        </option>
-
-                        <option>
-                            Other
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- 9 -->
-
-                <div class="form-group">
-
-                    <label>
-                        Phone / WhatsApp Number
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="e.g. 08012345678"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- 10 -->
-
-                <div class="form-group">
-
-                    <label>
-                        School Email Address
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="school@example.com"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 SECTION 3
-            ================================== -->
-
-            <div class="section-title">
-
-                <div class="section-number">
-                    03
-                </div>
-
-                <div>
-
-                    <h3>
-                        Collection Information
-                    </h3>
-
-                    <p>
-                        Help us understand your school's
-                        collection capacity.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <!-- 11 -->
-
-                <div class="form-group full">
-
-                    <label>
-                        Does the school have a dedicated
-                        space for storing collected PET bottles?
-                        <span class="required">*</span>
-                    </label>
-
-                    <select
-                        name="storageSpace"
-                        required
-                    >
-
-                        <option value="">
-                            Select an option
-                        </option>
-
-                        <option>
-                            Yes
-                        </option>
-
-                        <option>
-                            No
-                        </option>
-
-                    </select>
-
-                    <div class="help-text">
-
-                        The bottles will remain at the school
-                        until our collection team picks them up.
-
-                    </div>
-
-                </div>
-
-
-                <!-- 12 = ORIGINAL QUESTION 13 -->
-
-                <div class="form-group full">
-
-                    <label>
-                        Approximately how many PET bottles
-                        can your school collect monthly?
-                        <span class="required">*</span>
-                    </label>
-
-                    <select
-                        name="estimatedMonthlyBottles"
-                        required
-                    >
-
-                        <option value="">
-                            Select an estimate
-                        </option>
-
-                        <option>
-                            Below 5,000
-                        </option>
-
-                        <option>
-                            5,000 – 10,000
-                        </option>
-
-                        <option>
-                            10,000 – 25,000
-                        </option>
-
-                        <option>
-                            25,000 – 50,000
-                        </option>
-
-                        <option>
-                            Above 50,000
-                        </option>
-
-                        <option>
-                            Not sure
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 SECTION 4
-            ================================== -->
-
-            <div class="section-title">
-
-                <div class="section-number">
-                    04
-                </div>
-
-                <div>
-
-                    <h3>
-                        Why Join Our Program?
-                    </h3>
-
-                    <p>
-                        Tell us what motivates your school.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <!-- 13 = ORIGINAL QUESTION 14 -->
-
-                <div class="form-group full">
-
-                    <label>
-                        Why does your school want to join
-                        the program?
-                        <span class="required">*</span>
-                    </label>
-
-
-                    <div class="checkbox-group">
-
-                        <label class="checkbox-option">
-
-                            <input
-                                type="checkbox"
-                                name="reasons"
-                                value="Reduce plastic pollution"
-                            >
-
-                            <span>
-                                Reduce plastic pollution
-                            </span>
-
-                        </label>
-
-
-                        <label class="checkbox-option">
-
-                            <input
-                                type="checkbox"
-                                name="reasons"
-                                value="Support students with school fees"
-                            >
-
-                            <span>
-                                Support students with school fees
-                            </span>
-
-                        </label>
-
-
-                        <label class="checkbox-option">
-
-                            <input
-                                type="checkbox"
-                                name="reasons"
-                                value="Generate funds for the school"
-                            >
-
-                            <span>
-                                Generate funds for the school
-                            </span>
-
-                        </label>
-
-
-                        <label class="checkbox-option">
-
-                            <input
-                                type="checkbox"
-                                name="reasons"
-                                value="Environmental education"
-                            >
-
-                            <span>
-                                Environmental education
-                            </span>
-
-                        </label>
-
-
-                        <label class="checkbox-option">
-
-                            <input
-                                type="checkbox"
-                                name="reasons"
-                                value="Encourage student participation"
-                            >
-
-                            <span>
-                                Encourage student participation
-                            </span>
-
-                        </label>
-
-
-                        <label class="checkbox-option">
-
-                            <input
-                                type="checkbox"
-                                name="reasons"
-                                value="Community development"
-                            >
-
-                            <span>
-                                Community development
-                            </span>
-
-                        </label>
-
-
-                        <label class="checkbox-option">
-
-                            <input
-                                type="checkbox"
-                                name="reasons"
-                                value="Other"
-                            >
-
-                            <span>
-                                Other
-                            </span>
-
-                        </label>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 SECTION 5
-            ================================== -->
-
-            <div class="section-title">
-
-                <div class="section-number">
-                    05
-                </div>
-
-                <div>
-
-                    <h3>
-                        Authorization
-                    </h3>
-
-                    <p>
-                        Confirm your school's participation.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <!-- 14 = ORIGINAL QUESTION 15 -->
-
-                <div class="form-group full">
-
-                    <div class="consent-box">
-
-                        <input
-                            type="checkbox"
-                            id="agreement"
-                            name="agreement"
-                            value="Agreed"
-                            required
-                        >
-
-                        <label for="agreement">
-
-                            I confirm that I am authorized to
-                            submit this registration on behalf
-                            of the school. I understand that
-                            the school is expressing its interest
-                            in participating in the PET bottle
-                            collection and environmental program.
-
-                            <span class="required">
-                                *
-                            </span>
-
-                        </label>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 SUBMIT
-            ================================== -->
-
-            <div class="submit-area">
-
-                <button
-                    type="submit"
-                    class="submit-button"
-                    id="submitButton"
-                >
-
-                    Register School
+                    <i class="fa-solid fa-arrow-right"></i>
 
                 </button>
 
-                <div class="privacy-note">
+                <p class="form-message" id="formMessage"></p>
 
-                    By submitting this form, you agree that
-                    the information provided may be used to
-                    process and manage your school's participation
-                    in the program.
-
-                </div>
-
-            </div>
-
-        </form>
-
-
-
-        <!-- =================================
-             SUCCESS SCREEN
-        ================================== -->
-
-        <div
-            class="success-screen"
-            id="successScreen"
-        >
-
-            <div class="success-icon">
-                ✓
-            </div>
-
-            <h2>
-                Registration Received!
-            </h2>
-
-            <p>
-
-                Thank you for registering your school
-                with us.
-
-            </p>
-
-            <div class="success-highlight">
-
-                🌱 You are not only helping to protect
-                the environment — you are also helping
-                us create opportunities that can positively
-                impact the lives of students.
-
-            </div>
-
-            <p style="margin-top:20px;">
-
-                A confirmation email has been sent to
-                the email address provided. Our team
-                will review your registration and get
-                back to you shortly.
-
-            </p>
+            </form>
 
         </div>
 
@@ -1830,322 +4294,678 @@
 
 </section>
 
+</main>
 
 
-<!-- =========================================
+<!-- =========================================================
      FOOTER
-========================================= -->
+========================================================= -->
 
-<footer>
+<footer class="footer">
 
-    <div class="footer-content">
+    <div class="container">
 
-        <div>
+        <div class="footer-top">
 
-            <h3>
-                ♻ ReBottle
-            </h3>
+            <div class="footer-brand">
 
-            <p>
+                <a href="#home" class="brand">
 
-                Turning plastic waste into opportunities
-                while building cleaner communities and
-                supporting education.
+                    <div class="brand-icon">
+                        DP
+                    </div>
 
-            </p>
+                    <div class="brand-text">
+
+                        <strong>DELPOSH</strong>
+                        <span>FITNESS</span>
+
+                    </div>
+
+                </a>
+
+                <p>
+                    Stronger today.
+                    Better tomorrow.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>QUICK LINKS</h4>
+
+                <a href="#about">About</a>
+                <a href="#programs">Programs</a>
+                <a href="#trainers">Trainers</a>
+                <a href="#pricing">Membership</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h4>FOLLOW US</h4>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                    Instagram
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-tiktok"></i>
+                    TikTok
+                </a>
+
+            </div>
+
+
+            <div class="footer-newsletter">
+
+                <h4>READY TO START?</h4>
+
+                <p>
+                    Join the Delposh movement today.
+                </p>
+
+                <a href="#contact" class="btn btn-primary">
+                    JOIN NOW
+                </a>
+
+            </div>
 
         </div>
 
 
-        <div>
+        <div class="footer-bottom">
 
-            <h3>
-                Schools
-            </h3>
+            <span>
+                © 2026 Delposh Fitness. All Rights Reserved.
+            </span>
 
-            <a href="partners.html">
-                Register School
-            </a>
-
-            <a href="partners.html">
-                School Portal
-            </a>
-
-            <a href="partners.html">
-                How It Works
-            </a>
+            <span>
+                BUILT FOR THOSE WHO REFUSE TO QUIT.
+            </span>
 
         </div>
-
-
-        <div>
-
-            <h3>
-                Get Involved
-            </h3>
-
-            <a href="mailto:adec14530@gmail.com">
-                Partner With Us
-            </a>
-
-            <a href="mailto:adec14530@gmail.com">
-                Contact Us
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        © 2026 ReBottle Initiative.
-        All rights reserved.
 
     </div>
 
 </footer>
 
 
+<button class="back-top" id="backTop">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
 
 <script>
+/* =========================================================
+   DELPOSH FITNESS — CORRECTED JAVASCRIPT
+========================================================= */
 
-    /* =========================================
-       GOOGLE APPS SCRIPT URL
-    ========================================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-    const APPS_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbzVSCM6Em-B20J_rapFwNCxhGMasm2jgzMPOSQUkni9qXBoUO2unSc1Q2XMzinob7U2/exec";
+    /* =====================================================
+       PRELOADER
+    ===================================================== */
+
+    const preloader = document.getElementById("preloader");
+
+    if (preloader) {
+
+        const hidePreloader = () => {
+
+            setTimeout(() => {
+
+                preloader.classList.add("hide");
+
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 850);
+
+            }, 800);
+
+        };
+
+        if (document.readyState === "complete") {
+            hidePreloader();
+        } else {
+            window.addEventListener("load", hidePreloader);
+        }
+    }
 
 
-    /* =========================================
-       FORM
-    ========================================= */
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
 
-    const form =
-        document.getElementById(
-            "schoolRegistrationForm"
-        );
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
 
-    const submitButton =
-        document.getElementById(
-            "submitButton"
-        );
+    if (menuBtn && nav) {
+
+        menuBtn.addEventListener("click", () => {
+
+            menuBtn.classList.toggle("open");
+            nav.classList.toggle("open");
+
+        });
+
+        nav.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                menuBtn.classList.remove("open");
+                nav.classList.remove("open");
+
+            });
+
+        });
+
+    }
 
 
-    /* =========================================
-       SUBMIT FORM
-    ========================================= */
+    /* =====================================================
+       HEADER SCROLL
+    ===================================================== */
 
-    form.addEventListener(
-        "submit",
-        async function(event) {
+    const header = document.getElementById("header");
+
+    function updateHeader() {
+
+        if (!header) return;
+
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+    }
+
+    window.addEventListener("scroll", updateHeader);
+    updateHeader();
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function updateActiveNavigation() {
+
+        let current = "home";
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 180;
+
+            const sectionBottom =
+                sectionTop + section.offsetHeight;
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionBottom
+            ) {
+                current = section.id;
+            }
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            if (
+                link.getAttribute("href") ===
+                `#${current}`
+            ) {
+                link.classList.add("active");
+            }
+
+        });
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation
+    );
+
+    updateActiveNavigation();
+
+
+    /* =====================================================
+       SMOOTH SCROLL
+    ===================================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", function (event) {
+
+            const targetID =
+                this.getAttribute("href");
+
+            if (
+                !targetID ||
+                targetID === "#"
+            ) {
+                return;
+            }
+
+            const target =
+                document.querySelector(targetID);
+
+            if (!target) return;
 
             event.preventDefault();
 
+            const headerHeight =
+                header ? header.offsetHeight : 80;
 
-            /* ---------------------------------
-               CHECK REASONS
-            --------------------------------- */
+            const position =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                headerHeight;
 
-            const reasons =
-                document.querySelectorAll(
-                    'input[name="reasons"]:checked'
+            window.scrollTo({
+                top: position,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    if (revealElements.length) {
+
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            /*
+                             * IMPORTANT:
+                             * CSS uses .visible
+                             */
+
+                            entry.target.classList.add("visible");
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.08,
+                    rootMargin:
+                        "0px 0px -30px 0px"
+                }
+            );
+
+        revealElements.forEach(element => {
+
+            revealObserver.observe(element);
+
+        });
+
+    }
+
+
+    /* =====================================================
+       MAKE HERO VISIBLE IMMEDIATELY
+    ===================================================== */
+
+    const heroContent =
+        document.querySelector(".hero-content");
+
+    if (heroContent) {
+
+        setTimeout(() => {
+
+            heroContent.classList.add("visible");
+
+        }, 1000);
+
+    }
+
+
+    /* =====================================================
+       COUNTERS
+    ===================================================== */
+
+    const counters =
+        document.querySelectorAll("[data-count]");
+
+    function animateCounter(counter) {
+
+        const target =
+            parseInt(
+                counter.dataset.count,
+                10
+            );
+
+        if (isNaN(target)) return;
+
+        const duration = 1800;
+        const start = performance.now();
+
+        function update(time) {
+
+            const progress =
+                Math.min(
+                    (time - start) / duration,
+                    1
                 );
 
-
-            if (reasons.length === 0) {
-
-                alert(
-                    "Please select at least one reason for joining the program."
+            const eased =
+                1 - Math.pow(
+                    1 - progress,
+                    3
                 );
 
-                return;
+            counter.textContent =
+                Math.floor(
+                    target * eased
+                ).toLocaleString();
+
+            if (progress < 1) {
+
+                requestAnimationFrame(update);
+
+            } else {
+
+                counter.textContent =
+                    target.toLocaleString();
+
             }
 
+        }
 
-            /* ---------------------------------
-               CHECK APPS SCRIPT URL
-            --------------------------------- */
+        requestAnimationFrame(update);
+
+    }
+
+
+    if (counters.length) {
+
+        const counterObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            animateCounter(
+                                entry.target
+                            );
+
+                            counterObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.5
+                }
+            );
+
+        counters.forEach(counter => {
+
+            counterObserver.observe(counter);
+
+        });
+
+    }
+
+
+    /* =====================================================
+       IMAGE LOADING
+    ===================================================== */
+
+    const images =
+        document.querySelectorAll("img");
+
+    const fallbackImage =
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85";
+
+    images.forEach(image => {
+
+        image.addEventListener("error", () => {
 
             if (
-                APPS_SCRIPT_URL ===
-                "YOUR_APPS_SCRIPT_WEB_APP_URL"
+                image.dataset.fallback === "true"
             ) {
-
-                alert(
-                    "Please connect the Google Apps Script Web App URL first."
-                );
-
                 return;
             }
 
+            image.dataset.fallback = "true";
 
-            /* ---------------------------------
-               BUTTON STATE
-            --------------------------------- */
+            image.src = fallbackImage;
 
-            submitButton.disabled = true;
+        });
 
-            submitButton.textContent =
-                "Submitting Registration...";
+    });
 
 
-            /* ---------------------------------
-               CREATE FORM DATA
-            --------------------------------- */
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
 
-            const formData =
-                new FormData(form);
+    const backTop =
+        document.querySelector(".back-top");
 
+    if (backTop) {
 
-            /* ---------------------------------
-               CONVERT REASONS TO ONE VALUE
-            --------------------------------- */
+        function updateBackTop() {
 
-            const selectedReasons =
-                Array.from(reasons)
-                .map(
-                    checkbox =>
-                        checkbox.value
-                )
-                .join(", ");
+            if (window.scrollY > 500) {
 
+                backTop.classList.add("show");
 
-            formData.set(
-                "reasons",
-                selectedReasons
-            );
+            } else {
 
+                backTop.classList.remove("show");
 
-            /* ---------------------------------
-               ADD DATE/TIME
-            --------------------------------- */
+            }
 
-            formData.append(
-                "submittedAt",
-                new Date().toISOString()
-            );
+        }
 
+        window.addEventListener(
+            "scroll",
+            updateBackTop
+        );
 
-            try {
+        updateBackTop();
 
-                /*
-                 Google Apps Script Web Apps
-                 can receive this request using
-                 doPost(e).
-
-                 mode:no-cors is used because
-                 Google Apps Script does not provide
-                 normal CORS headers for this type
-                 of custom frontend request.
-                */
-
-                await fetch(
-                    APPS_SCRIPT_URL,
-                    {
-                        method: "POST",
-
-                        mode: "no-cors",
-
-                        body: formData
-                    }
-                );
-
-
-                /* ---------------------------------
-                   SHOW SUCCESS
-                --------------------------------- */
-
-                form.style.display =
-                    "none";
-
-                document
-                    .getElementById(
-                        "successScreen"
-                    )
-                    .style.display =
-                    "block";
-
+        backTop.addEventListener(
+            "click",
+            () => {
 
                 window.scrollTo({
                     top: 0,
                     behavior: "smooth"
                 });
 
-
-            } catch (error) {
-
-                console.error(error);
-
-                alert(
-                    "Something went wrong while submitting your registration. Please try again."
-                );
-
-                submitButton.disabled =
-                    false;
-
-                submitButton.textContent =
-                    "Register School";
-
             }
-
-        }
-    );
-
-
-    /* =========================================
-       MOBILE MENU
-    ========================================= */
-
-    function toggleMobileMenu() {
-
-        const nav =
-            document.querySelector(
-                ".nav-links"
-            );
-
-
-        if (
-            nav.style.display === "flex"
-        ) {
-
-            nav.style.display =
-                "none";
-
-        } else {
-
-            nav.style.display =
-                "flex";
-
-            nav.style.flexDirection =
-                "column";
-
-            nav.style.position =
-                "absolute";
-
-            nav.style.top =
-                "76px";
-
-            nav.style.left =
-                "0";
-
-            nav.style.right =
-                "0";
-
-            nav.style.background =
-                "white";
-
-            nav.style.padding =
-                "25px";
-
-            nav.style.boxShadow =
-                "0 10px 25px rgba(0,0,0,.08)";
-        }
+        );
 
     }
 
+
+    /* =====================================================
+       GALLERY
+    ===================================================== */
+
+    const galleryImages =
+        document.querySelectorAll(
+            ".gallery-item img"
+        );
+
+    galleryImages.forEach(image => {
+
+        image.style.cursor = "pointer";
+
+        image.addEventListener(
+            "click",
+            () => {
+
+                const lightbox =
+                    document.createElement("div");
+
+                lightbox.style.position = "fixed";
+                lightbox.style.inset = "0";
+                lightbox.style.background =
+                    "rgba(0,0,0,.95)";
+                lightbox.style.zIndex = "999999";
+                lightbox.style.display = "flex";
+                lightbox.style.alignItems =
+                    "center";
+                lightbox.style.justifyContent =
+                    "center";
+                lightbox.style.padding = "30px";
+
+                lightbox.innerHTML = `
+                    <button
+                        style="
+                            position:absolute;
+                            top:25px;
+                            right:30px;
+                            background:none;
+                            border:0;
+                            color:white;
+                            font-size:40px;
+                            cursor:pointer;
+                        "
+                    >&times;</button>
+
+                    <img
+                        src="${image.src}"
+                        alt="${image.alt || "Delposh Fitness"}"
+                        style="
+                            max-width:95%;
+                            max-height:90vh;
+                            object-fit:contain;
+                        "
+                    >
+                `;
+
+                document.body.appendChild(
+                    lightbox
+                );
+
+                document.body.style.overflow =
+                    "hidden";
+
+                lightbox.addEventListener(
+                    "click",
+                    event => {
+
+                        if (
+                            event.target ===
+                            lightbox ||
+                            event.target.tagName ===
+                            "BUTTON"
+                        ) {
+
+                            lightbox.remove();
+
+                            document.body.style
+                                .overflow = "";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       CONTACT FORM
+    ===================================================== */
+
+    const contactForm =
+        document.getElementById(
+            "contactForm"
+        );
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+
+                alert(
+                    "Thank you for contacting Delposh Fitness. We will get back to you shortly."
+                );
+
+                contactForm.reset();
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CURRENT YEAR
+    ===================================================== */
+
+    document
+        .querySelectorAll("[data-year]")
+        .forEach(element => {
+
+            element.textContent =
+                new Date().getFullYear();
+
+        });
+
+
+    /* =====================================================
+       PAGE READY
+    ===================================================== */
+
+    document.body.classList.add(
+        "js-loaded"
+    );
+
+});
 </script>
+
 
 </body>
 </html>
