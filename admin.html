@@ -1,0 +1,1296 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wellness Buddy - Fitness, Corporate Wellness, Workout Safety and Well-being Solutions.">
+<title>Wellness Buddy | Work. Live. Thrive.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ==============================
+   WELLNESS BUDDY BRAND SETTINGS
+================================ */
+
+:root {
+    --green: #064b2d;
+    --deep-green: #01351f;
+    --bright-green: #138b43;
+    --gold: #eeb32c;
+    --baby-gold: #f8edcf;
+    --cream: #fbf8f0;
+    --white: #ffffff;
+    --ink: #10251b;
+
+    --heading-font: "Playfair Display", Georgia, serif;
+    --body-font: "DM Sans", Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.section-wrap {
+    width: min(1200px, calc(100% - 48px));
+    margin: auto;
+}
+
+/* ==============================
+   HEADER AND NAVIGATION
+================================ */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    box-shadow: 0 3px 18px rgba(0,0,0,0.05);
+}
+
+.header-inner {
+    width: min(1240px, calc(100% - 48px));
+    height: 78px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand img {
+    width: 150px;
+    max-height: 58px;
+    object-fit: contain;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 27px);
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.main-nav a {
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--gold);
+}
+
+.main-nav a:first-child {
+    border-bottom: 2px solid var(--gold);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 23px;
+    height: 2px;
+    margin: 5px;
+    background: var(--green);
+}
+
+/* ==============================
+   BUTTONS
+================================ */
+
+.btn {
+    min-height: 44px;
+    padding: 12px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    border-radius: 999px;
+    font: 700 0.88rem var(--body-font);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.btn-gold {
+    background: var(--gold);
+    color: #16180e;
+}
+
+.btn-green {
+    background: var(--green);
+    color: white;
+}
+
+.btn-outline {
+    border: 1px solid var(--green);
+    color: var(--green);
+    background: transparent;
+}
+
+.header-cta {
+    white-space: nowrap;
+}
+
+/* ==============================
+   HERO SECTION
+================================ */
+
+.hero {
+    min-height: 440px;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+    gap: 30px;
+    padding: 35px 0 30px;
+}
+
+.hero-copy {
+    padding: 18px 0 18px 32px;
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    color: #c58a0b;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-family: var(--heading-font);
+    color: var(--green);
+    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    line-height: 1.06;
+    margin-bottom: 14px;
+    letter-spacing: -0.04em;
+}
+
+.hero h1 em {
+    color: var(--gold);
+}
+
+.hero-intro {
+    max-width: 450px;
+    margin-bottom: 22px;
+    font-size: 1.08rem;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-note {
+    margin-top: 28px;
+    color: var(--green);
+    font-family: var(--heading-font);
+    font-style: italic;
+}
+
+.note-line {
+    display: inline-block;
+    width: 35px;
+    height: 2px;
+    margin: 0 8px 5px 0;
+    background: var(--gold);
+}
+
+.hero-visual {
+    min-height: 370px;
+    position: relative;
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 48% 0 0 48%;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image-accent {
+    position: absolute;
+    inset: -15px 12px -10px -22px;
+    border: 9px solid var(--gold);
+    border-right: 0;
+    border-radius: 50% 0 0 50%;
+}
+
+/* ==============================
+   FEATURE STRIP
+================================ */
+
+.feature-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: var(--cream);
+    border: 1px solid #f0e6cf;
+    border-radius: 20px;
+    padding: 16px 10px;
+    margin-bottom: 48px;
+}
+
+.feature {
+    display: flex;
+    min-height: 66px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-align: center;
+    color: var(--deep-green);
+    font-size: 0.84rem;
+    line-height: 1.25;
+}
+
+.feature + .feature {
+    border-left: 1px solid #b8b49e;
+}
+
+.feature-icon {
+    color: var(--green);
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+/* ==============================
+   ALTERNATING CONTENT SECTIONS
+================================ */
+
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 68px);
+    margin-bottom: 42px;
+}
+
+.split-image {
+    min-height: 260px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.split-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    border-radius: 18px 100px 18px 18px;
+}
+
+.image-right img {
+    border-radius: 100px 18px 18px 18px;
+}
+
+.split-copy {
+    padding: 18px 28px;
+}
+
+.split-copy .eyebrow span {
+    display: inline-block;
+    width: 55px;
+    height: 1px;
+    margin: 0 0 4px 10px;
+    background: var(--gold);
+}
+
+.split-copy h2,
+.section-heading h2 {
+    color: var(--green);
+    font-family: var(--heading-font);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.12;
+    margin-bottom: 10px;
+}
+
+.split-copy > p:not(.eyebrow) {
+    margin-bottom: 12px;
+    max-width: 520px;
+}
+
+/* CHECKLIST */
+
+.check-list {
+    list-style: none;
+    margin: 12px 0 18px;
+}
+
+.check-list li {
+    margin: 7px 0;
+}
+
+.check-list li::before {
+    content: "✓";
+    display: inline-grid;
+    place-items: center;
+    width: 19px;
+    height: 19px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #159444;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+/* ==============================
+   TESTIMONIALS
+================================ */
+
+.testimonials {
+    margin-top: 50px;
+    padding: 35px 24px 40px;
+    background: var(--cream);
+    border-radius: 24px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.section-heading .eyebrow span {
+    display: inline-block;
+    width: 65px;
+    height: 1px;
+    margin: 0 10px 4px;
+    background: var(--gold);
+}
+
+.section-heading h2 {
+    font-size: clamp(1.7rem, 3vw, 2.35rem);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.testimonial-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px;
+    background: white;
+    border-radius: 17px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.testimonial-card img {
+    width: 66px;
+    height: 66px;
+    flex: 0 0 66px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.testimonial-card p {
+    margin-bottom: 7px;
+    font-size: 0.86rem;
+}
+
+.testimonial-card strong {
+    color: var(--green);
+    font-size: 0.75rem;
+}
+
+/* ==============================
+   NEWSLETTER
+================================ */
+
+.newsletter {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding: 20px 6%;
+    color: white;
+    background: var(--deep-green);
+    border-radius: 18px;
+}
+
+.newsletter-copy {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mail-icon {
+    color: var(--gold);
+    font-size: 2.5rem;
+}
+
+.newsletter h2 {
+    font-family: var(--heading-font);
+    font-size: 1.55rem;
+}
+
+.newsletter p {
+    font-size: 0.86rem;
+}
+
+.newsletter-form {
+    display: flex;
+    width: min(500px, 52%);
+    gap: 10px;
+}
+
+.newsletter-form input {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 999px;
+    font: inherit;
+}
+
+.form-message {
+    position: absolute;
+    right: 7%;
+    bottom: -22px;
+    color: var(--green);
+    font-size: 0.8rem;
+}
+
+/* ==============================
+   FOOTER
+================================ */
+
+.site-footer {
+    margin-top: 22px;
+    color: white;
+    background: var(--deep-green);
+    border-top: 4px solid var(--gold);
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1.4fr 1.5fr 0.8fr 1fr;
+    align-items: center;
+    gap: 24px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.footer-brand img {
+    width: 135px;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+.footer-brand p {
+    padding-left: 18px;
+    border-left: 1px solid var(--gold);
+    font-size: 0.75rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 15px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.social-links {
+    display: flex;
+    gap: 9px;
+}
+
+.social-links a {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    color: var(--deep-green);
+    background: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.footer-tagline {
+    padding-left: 18px;
+    border-left: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--heading-font);
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    font-size: 0.72rem;
+}
+
+.footer-bottom div {
+    display: flex;
+    gap: 18px;
+}
+
+/* ==============================
+   ACCESSIBILITY
+================================ */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==============================
+   TABLET RESPONSIVENESS
+================================ */
+
+@media (max-width: 980px) {
+
+    .header-inner {
+        gap: 14px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 0;
+    }
+
+    .brand {
+        margin-right: auto;
+    }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        padding: 20px 28px;
+        background: white;
+        box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-nav.is-open {
+        display: flex;
+    }
+
+    .hero-copy {
+        padding-left: 8px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ==============================
+   MOBILE RESPONSIVENESS
+================================ */
+
+@media (max-width: 680px) {
+
+    .section-wrap {
+        width: min(calc(100% - 30px), 520px);
+    }
+
+    .header-inner {
+        width: calc(100% - 26px);
+        height: 70px;
+    }
+
+    .brand img {
+        width: 125px;
+    }
+
+    .header-cta {
+        min-height: 39px;
+        padding: 9px 13px;
+        font-size: 0.72rem;
+    }
+
+    .main-nav {
+        top: 70px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 28px;
+    }
+
+    .hero-copy {
+        padding: 0 5px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 12vw, 3.7rem);
+    }
+
+    .hero-visual {
+        min-height: 260px;
+    }
+
+    .hero-visual img {
+        height: 280px;
+        border-radius: 100px 18px 18px 18px;
+    }
+
+    .hero-image-accent {
+        inset: -8px 8px -8px -8px;
+        border-radius: 100px 18px 18px 18px;
+        border-right: 9px solid var(--gold);
+    }
+
+    .feature-strip {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px 0;
+        margin-bottom: 35px;
+    }
+
+    .feature {
+        min-height: 70px;
+    }
+
+    .feature:nth-child(4) {
+        border-left: 0;
+    }
+
+    .split-section {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 34px;
+    }
+
+    .split-image {
+        min-height: 220px;
+    }
+
+    .split-image img {
+        min-height: 220px;
+        max-height: 270px;
+    }
+
+    .split-copy {
+        padding: 10px 5px 20px;
+    }
+
+    .reverse-mobile .split-copy {
+        order: 2;
+    }
+
+    .reverse-mobile .split-image {
+        order: 1;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 22px;
+    }
+
+    .newsletter-form {
+        width: 100%;
+    }
+
+    .newsletter-form .btn {
+        padding-left: 15px;
+        padding-right: 15px;
+        white-space: nowrap;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .footer-brand {
+        flex-wrap: wrap;
+    }
+
+    .footer-tagline {
+        text-align: left;
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+
+    .footer-bottom div {
+        flex-wrap: wrap;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ==============================
+     HEADER
+================================ -->
+
+<header class="site-header">
+    <div class="header-inner">
+
+        <button class="menu-toggle"
+                aria-label="Open navigation"
+                aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <a class="brand" href="#home">
+            <img src="assets/logo.png" alt="Wellness Buddy Logo">
+        </a>
+
+        <nav class="main-nav" id="main-nav">
+            <a href="#about">About</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#safety">Thrive Desk</a>
+            <a href="#shop">Shop</a>
+            <a href="#podcast">Podcast</a>
+            <a href="#sustainability">Sustainability</a>
+            <a href="#partners">Partners</a>
+        </nav>
+
+        <a href="#contact" class="btn btn-gold header-cta">
+            Book a consultation 
+        </a>
+
+    </div>
+</header>
+
+
+<main>
+
+<!-- ==============================
+     HERO SECTION
+================================ -->
+
+<section class="hero section-wrap" id="home">
+
+    <div class="hero-copy">
+
+        <p class="eyebrow">Why we exist</p>
+
+        <h1>
+            We built Wellness Buddy because we listened, and didn't like what we heard.
+            
+        </h1>
+
+        <p class="hero-intro">
+           Through hundreds of unfiltered street conversations and real employee voices on Lead & Live Well, one pattern kept repeating. Eye service, where being seen as busy matters more than doing meaningful work. Leaders promoted for hitting targets, rarely for how they treat the people helping them hit those targets. Pay conversations wrapped in silence. Employees carrying stress and unfair treatment with nowhere safe to take it, until they quit, break down, or simply stop trying.
+        </p>
+
+
+        <div class="hero-note">
+            
+            A healthier you. A stronger tomorrow.
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <img src="assets/hero-fitness.jpg"
+             alt="Woman exercising with dumbbells">
+
+        <div class="hero-image-accent"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     FEATURE STRIP
+================================ -->
+
+<section class="feature-strip section-wrap">
+
+    <a href="#solutions" class="feature">
+        <span class="feature-icon">6</span>
+        <strong>Solution<br>Pillars</strong>
+    </a>
+
+    <a href="#solutions" class="feature">
+        <span class="feature-icon">3x</span>
+        <strong>Podcast<br>Drops weekly</strong>
+    </a>
+
+    <a href="#safety" class="feature">
+        <span class="feature-icon">1st</span>
+        <strong>Confidential navigation<br>Desk in Nigeria</strong>
+    </a>
+
+    <a href="#solutions" class="feature">
+        <span class="feature-icon">RC</span>
+        <strong>8419587 · <br>Registered in Nigeria</strong>
+    </a>
+
+    
+
+</section>
+
+
+<!-- ==============================
+     SECTION 1: SOLUTIONS
+     IMAGE LEFT - TEXT RIGHT
+================================ -->
+
+<section class="split-section section-wrap" id="solutions">
+
+    <div class="split-image image-left">
+
+        <img src="assets/fitness-training.jpg"
+             alt="Man doing strength training">
+
+    </div>
+
+    <div class="split-copy">
+
+        <p class="eyebrow">
+            The future we're building toward
+        </p>
+
+        <h2>
+            A workplace where wellbeing is strategy, not an afterthought
+        </h2>
+
+        <p>
+            In organisations Gallup identifies as best-practice, 79% of managers are engaged at work, nearly four times the 22% global average. That gap between what's possible and what's normal is exactly where we work.
+        </p>
+
+        <ul class="check-list">
+            <li>employee engagement and productivity rise together, because people who feel valued do better work</li>
+            <li>wellbeing is strategy, not an afterthought</li>
+            <li>leaders are held accountable, not protected by their title</li>
+            <li>leaders are trained to manage people, not just chase targets</li>
+            <li>promotion is earned by how you lead people, not only the numbers you hit</li>
+            <li>organisations act as good citizens of the world they operate in</li>
+            <li>employees have somewhere real to go, before burnout, before quitting, before it costs them everything</li>
+        </ul>
+
+       
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     SECTION 2: WORKOUT SAFETY
+     TEXT LEFT - IMAGE RIGHT
+================================ -->
+
+<section class="split-section reverse-mobile section-wrap"
+         id="safety">
+
+    <div class="split-copy">
+
+        <p class="eyebrow">
+            Solutions
+        </p>
+
+        <h2>
+            Six doors into a healthier organisation.
+        </h2>
+
+     
+
+        <ul class="check-list">
+            <li>Corporate wellness</li>
+            <li>Team engagement and culture</li>
+            <li>Recruitment and talent</li>
+            <li>HSE services</li>
+            <li>Certification and process</li>
+            <li>The Thrive Desk</li>
+        </ul>
+
+       
+
+    </div>
+
+    <div class="split-image image-right">
+
+        <img src="assets/workout-safety.jpg"
+             alt="Wellness and workout safety equipment">
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     SECTION 3: WELL-BEING
+     IMAGE LEFT - TEXT RIGHT
+================================ -->
+
+<section class="split-section section-wrap" id="wellbeing">
+
+    <div class="split-image image-left">
+
+        <img src="assets/wellbeing.jpg"
+             alt="Woman relaxing after a wellness session">
+
+    </div>
+
+    <div class="split-copy">
+
+        <p class="eyebrow">
+            Trusted by 
+        </p>
+
+        <h2>
+            Already working alongside organisations like Ferayan Dental and Dermatological Clinic.
+        </h2>
+
+        <p>
+            We're an early-stage consultancy building our client base deliberately, one retained relationship at a time. If you want a partner who gives your organisation direct founder-level attention, now is a good time to start the conversation
+        </p>
+
+     
+
+        <a href="#resources" class="btn btn-gold">
+            Book a call
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     TESTIMONIALS
+================================ -->
+
+<section class="testimonials section-wrap" id="partners">
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            
+            WHAT OUR CLIENTS SAY
+            
+        </p>
+
+        <h2>
+            Trusted by Individuals and Organizations
+        </h2>
+
+    </div>
+
+    <div class="testimonial-grid">
+
+        <article class="testimonial-card">
+
+            <img src="assets/testimonial-1.jpg"
+                 alt="Client portrait">
+
+            <div>
+                <p>
+                    "Wellness Buddy has transformed our workplace.
+                    Our team is healthier, more productive and happier."
+                </p>
+
+                <strong>— HR Manager</strong>
+            </div>
+
+        </article>
+
+
+        <article class="testimonial-card">
+
+            <img src="assets/testimonial-2.jpg"
+                 alt="Client portrait">
+
+            <div>
+                <p>
+                    "The workout plans are easy to follow
+                    and the safety tips are very helpful."
+                </p>
+
+                <strong>— Fitness Enthusiast</strong>
+            </div>
+
+        </article>
+
+
+        <article class="testimonial-card">
+
+            <img src="assets/testimonial-3.jpg"
+                 alt="Client portrait">
+
+            <div>
+                <p>
+                    "A fantastic platform for wellness
+                    and fitness. Highly recommended!"
+                </p>
+
+                <strong>— Wellness Advocate</strong>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+
+</main>
+
+
+<!-- ==============================
+     FOOTER
+================================ -->
+
+<footer class="site-footer" id="contact">
+
+    <div class="footer-main section-wrap">
+
+        <div class="footer-brand">
+
+            <img src="assets/logo.png"
+                 alt="Wellness Buddy Logo">
+
+            <p>
+                Cultivating wellness in work and life, for people and organisations across Nigeria and Africa.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#about">About</a>
+            <a href="#partners">Partners</a>
+            <a href="#sustainability">Sustainability</a>
+            <a href="#podcast">Podcast</a>
+         
+        </div>
+
+
+        <div class="social-links">
+
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">🅾</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Tiktok">ᕷ</a>
+
+        </div>
+
+
+        <p class="footer-tagline">
+            Wellness for a<br>
+            Greater Tomorrow
+        </p>
+
+    </div>
+
+
+    <div class="footer-bottom section-wrap">
+
+        <span>
+            © <span id="year"></span>
+            Wellness Buddy Limited · RC 8419587 · Lagos, Nigeria
+        </span>
+
+        <div>
+            <P>0817 779 6354</P>
+            <P>consult@wellnessbuddy.africa</P>
+            <a href="mailto:info@wellnessbuddy.africa">
+                Contact Us
+            </a>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ==============================
+     JAVASCRIPT
+================================ -->
+
+<script>
+
+// MOBILE NAVIGATION
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector("#main-nav");
+
+if (menuToggle && mainNav) {
+
+    menuToggle.addEventListener("click", () => {
+
+        const isOpen = mainNav.classList.toggle("is-open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation" : "Open navigation"
+        );
+
+    });
+
+
+    // Close menu after clicking a navigation link
+
+    mainNav.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            mainNav.classList.remove("is-open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+
+        });
+
+    });
+
+}
+
+
+// AUTOMATIC COPYRIGHT YEAR
+
+const year = document.querySelector("#year");
+
+if (year) {
+    year.textContent = new Date().getFullYear();
+}
+
+
+// NEWSLETTER FORM - FRONTEND DEMO
+
+const newsletterForm = document.querySelector("#newsletter-form");
+
+const newsletterMessage = document.querySelector("#newsletter-message");
+
+if (newsletterForm && newsletterMessage) {
+
+    newsletterForm.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        const email = document
+            .querySelector("#newsletter-email")
+            .value.trim();
+
+        if (!email) return;
+
+        newsletterMessage.textContent =
+            "Thank you for subscribing! Connect this form to your mailing list to save addresses.";
+
+        newsletterForm.reset();
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
