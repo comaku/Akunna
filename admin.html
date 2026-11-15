@@ -4,8 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Wellness Buddy - Fitness, Corporate Wellness, Workout Safety and Well-being Solutions.">
+<meta name="description" content="Wellness Buddy supports healthier workplaces through corporate wellness, people and culture, recruitment, HSE and employee support solutions.">
 <title>Wellness Buddy | Work. Live. Thrive.</title>
+<meta name="theme-color" content="#064b2d">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -265,7 +266,7 @@ img {
 
 .feature-strip {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     background: var(--cream);
     border: 1px solid #f0e6cf;
     border-radius: 20px;
@@ -809,6 +810,95 @@ img {
     }
 }
 
+
+/* WELLNESS BUDDY REFINEMENT LAYER */
+:root { --green:#064b2d; --deep-green:#01351f; --bright-green:#138b43; --gold:#eeb32c; --baby-gold:#f8edcf; --cream:#fbf8f0; --ink:#18251e; --muted:#647168; --line:#e8e8df; }
+html { scroll-padding-top:100px; }
+body { color:var(--ink); -webkit-font-smoothing:antialiased; }
+.section-wrap { width:min(1200px,calc(100% - 56px)); }
+.site-header { background:rgba(255,255,255,.96); border-bottom:1px solid rgba(6,75,45,.08); backdrop-filter:blur(14px); box-shadow:none; }
+.header-inner { width:min(1280px,calc(100% - 56px)); height:82px; }
+.main-nav { gap:clamp(12px,1.6vw,24px); }
+.main-nav a { position:relative; font-size:.79rem; color:#34483b; }
+.main-nav a::after { content:""; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .25s; }
+.main-nav a:hover::after,.main-nav a[aria-current="location"]::after { transform:scaleX(1); }
+.main-nav a:hover { color:var(--green); }
+.btn { border-radius:3px; min-height:48px; transition:transform .25s,background .25s,color .25s; }
+.btn:hover { transform:translateY(-3px); box-shadow:none; }
+.hero { min-height:0; padding:76px 0 82px; gap:clamp(32px,5vw,75px); }
+.hero-copy { padding:18px 0; }
+.hero h1 { font-size:clamp(2.8rem,5.2vw,5rem); letter-spacing:-.045em; line-height:1.06; }
+.hero-intro { color:#536158; font-size:1rem; line-height:1.85; }
+.hero-visual { min-height:470px; }
+.hero-visual img { height:470px; border-radius:0 0 0 145px; }
+.hero-visual::before { content:""; position:absolute; inset:18px -18px -15px 15%; background:var(--baby-gold); z-index:0; }
+.hero-image-accent { display:none; }
+.hero-visual::after { content:"People first. Always."; position:absolute; z-index:2; right:-15px; bottom:28px; padding:20px 25px; color:white; background:var(--green); font:700 1.1rem var(--heading-font); box-shadow:0 15px 35px rgba(1,53,31,.16); }
+.eyebrow { color:#a8750a; letter-spacing:.15em; font-size:.74rem; }
+.feature-strip { border:0; border-radius:0; background:var(--cream); padding:22px 12px; margin-bottom:78px; }
+.feature { color:var(--green); min-height:75px; }
+.feature-icon { font-family:var(--heading-font); color:#a8750a; font-size:1.65rem; }
+.feature + .feature { border-color:#ddd5c5; }
+.split-section { gap:clamp(32px,5vw,70px); margin-bottom:88px; }
+.split-image img { min-height:360px; border-radius:0 0 0 90px; }
+.image-right img { border-radius:0 0 90px 0; }
+.split-copy { padding:16px 12px; }
+.split-copy h2,.section-heading h2 { letter-spacing:-.03em; }
+.check-list li { color:#536158; margin:10px 0; }
+.check-list li::before { background:var(--green); }
+.testimonials { margin-top:70px; padding:55px 30px; border-radius:0; background:var(--cream); }
+.testimonial-card { align-items:flex-start; padding:22px; border-radius:0; box-shadow:none; border:1px solid #eee9dd; }
+.testimonial-card img { border-radius:0; }
+.newsletter { border-radius:0; padding:30px 6%; }
+.site-footer { border-top:5px solid var(--gold); }
+.footer-main { padding-block:42px; }
+.footer-bottom { font-size:.75rem; }
+a:focus-visible,button:focus-visible { outline:3px solid #d99e20; outline-offset:4px; }
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .65s ease,transform .65s ease; }
+.reveal.is-visible { opacity:1; transform:none; }
+@media(max-width:980px) {
+ .header-inner { height:76px; }
+ .menu-toggle { display:block; order:0; }
+ .brand { margin-right:auto; }
+ .main-nav { display:flex; position:fixed; top:76px; left:0; right:0; bottom:0; z-index:999; padding:22px 28px; background:#fff; box-shadow:none; flex-direction:column; align-items:stretch; gap:0; transform:translateX(100%); visibility:hidden; transition:transform .3s,visibility .3s; }
+ .main-nav.is-open { display:flex; transform:translateX(0); visibility:visible; }
+ .main-nav a { padding:15px 4px; border-bottom:1px solid var(--line); font-size:1rem; }
+ .main-nav a::after { display:none; }
+ .menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(7px) rotate(45deg); }
+ .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+ .menu-toggle[aria-expanded="true"] span:last-child { transform:translateY(-7px) rotate(-45deg); }
+ .hero { grid-template-columns:1fr 1fr; }
+ .hero-visual,.hero-visual img { min-height:360px; height:360px; }
+}
+@media(max-width:680px) {
+ .section-wrap { width:calc(100% - 32px); }
+ .header-inner { width:calc(100% - 26px); height:70px; gap:10px; }
+ .brand img { width:118px; }
+ .header-cta { padding:9px 12px; font-size:.68rem; }
+ .main-nav { top:70px; }
+ .hero { grid-template-columns:1fr; padding:42px 0 58px; gap:28px; }
+ .hero-copy { padding:0 3px; }
+ .hero h1 { font-size:clamp(2.55rem,11vw,3.65rem); }
+ .hero-visual,.hero-visual img { min-height:280px; height:280px; }
+ .hero-visual img { border-radius:0 0 0 75px; }
+ .hero-visual::after { right:-8px; bottom:12px; padding:14px 17px; font-size:.95rem; }
+ .feature-strip { grid-template-columns:repeat(2,1fr); gap:12px 0; margin-bottom:55px; }
+ .feature:nth-child(odd) { border-left:0; }
+ .split-section { grid-template-columns:1fr; gap:10px; margin-bottom:55px; }
+ .split-image img { min-height:230px; max-height:300px; }
+ .split-copy { padding:10px 4px 18px; }
+ .reverse-mobile .split-copy { order:2; }
+ .reverse-mobile .split-image { order:1; }
+ .testimonial-grid { grid-template-columns:1fr; }
+ .footer-main { grid-template-columns:1fr; }
+ .footer-bottom { flex-direction:column; }
+}
+@media(prefers-reduced-motion:reduce) {
+ html { scroll-behavior:auto; }
+ *,*::before,*::after { transition-duration:.01ms!important; animation-duration:.01ms!important; }
+ .reveal { opacity:1; transform:none; }
+}
+
 </style>
 </head>
 
@@ -836,10 +926,10 @@ img {
         <nav class="main-nav" id="main-nav">
             <a href="#about">About</a>
             <a href="#solutions">Solutions</a>
-            <a href="#safety">Thrive Desk</a>
-            <a href="#shop">Shop</a>
-            <a href="#podcast">Podcast</a>
-            <a href="#sustainability">Sustainability</a>
+            <a href="#solutions">Thrive Desk</a>
+            <a href="#solutions">Shop</a>
+            <a href="#wellbeing">Podcast</a>
+            <a href="#about">Sustainability</a>
             <a href="#partners">Partners</a>
         </nav>
 
@@ -882,7 +972,7 @@ img {
 
     <div class="hero-visual">
 
-        <img src="https://tse4.mm.bing.net/th/id/OIP.1rjcroC02EcnJf4xLp_l2QHaC9?r=0&pid=Api&h=220&P=0"
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1400&q=85"
              alt="Woman exercising with dumbbells">
 
         <div class="hero-image-accent"></div>
@@ -908,7 +998,7 @@ img {
         <strong>Podcast<br>Drops weekly</strong>
     </a>
 
-    <a href="#safety" class="feature">
+    <a href="#solutions" class="feature">
         <span class="feature-icon">1st</span>
         <strong>Confidential navigation<br>Desk in Nigeria</strong>
     </a>
@@ -932,7 +1022,7 @@ img {
 
     <div class="split-image image-left">
 
-        <img src="https://tse1.mm.bing.net/th/id/OIP.XeXGH07rGSFaeNwdjc_J2wHaEI?r=0&pid=Api&h=220&P=0"
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85"
              alt="Man doing strength training">
 
     </div>
@@ -1002,7 +1092,7 @@ img {
 
     <div class="split-image image-right">
 
-        <img src="https://tse3.mm.bing.net/th/id/OIP.l21IPLSYYwjYV4cY80mafQHaE8?r=0&pid=Api&h=220&P=0"
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85"
              alt="Wellness and workout safety equipment">
 
     </div>
@@ -1019,7 +1109,7 @@ img {
 
     <div class="split-image image-left">
 
-        <img src="https://tse1.mm.bing.net/th/id/OIP.bFkFRPVTrFsUiOX-jM4tdgHaE8?r=0&pid=Api&h=220&P=0"
+        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=85"
              alt="Woman relaxing after a wellness session">
 
     </div>
@@ -1040,7 +1130,7 @@ img {
 
      
 
-        <a href="#resources" class="btn btn-gold">
+        <a href="#contact" class="btn btn-gold">
             Book a call
         </a>
 
@@ -1070,57 +1160,12 @@ img {
     </div>
 
     <div class="testimonial-grid">
-
-        <article class="testimonial-card">
-
-            <img src="assets/testimonial-1.jpg"
-                 alt="Client portrait">
-
+        <article class="testimonial-card" style="grid-column:1/-1; justify-content:center; text-align:center; padding:30px; border:1px solid #e8e1d2;">
             <div>
-                <p>
-                    "Wellness Buddy has transformed our workplace.
-                    Our team is healthier, more productive and happier."
-                </p>
-
-                <strong>— HR Manager</strong>
+                <p style="max-width:760px; margin:0 auto 12px; font-size:1rem;">We are an early-stage consultancy building our client relationships deliberately. As our work grows, this space will feature verified client stories and measurable outcomes.</p>
+                <strong>Wellness Buddy · Building better workplaces</strong>
             </div>
-
         </article>
-
-
-        <article class="testimonial-card">
-
-            <img src="assets/testimonial-2.jpg"
-                 alt="Client portrait">
-
-            <div>
-                <p>
-                    "The workout plans are easy to follow
-                    and the safety tips are very helpful."
-                </p>
-
-                <strong>— Fitness Enthusiast</strong>
-            </div>
-
-        </article>
-
-
-        <article class="testimonial-card">
-
-            <img src="assets/testimonial-3.jpg"
-                 alt="Client portrait">
-
-            <div>
-                <p>
-                    "A fantastic platform for wellness
-                    and fitness. Highly recommended!"
-                </p>
-
-                <strong>— Wellness Advocate</strong>
-            </div>
-
-        </article>
-
     </div>
 
 </section>
@@ -1155,8 +1200,8 @@ img {
 
             <a href="#about">About</a>
             <a href="#partners">Partners</a>
-            <a href="#sustainability">Sustainability</a>
-            <a href="#podcast">Podcast</a>
+            <a href="#about">Sustainability</a>
+            <a href="#wellbeing">Podcast</a>
          
         </div>
 
@@ -1263,31 +1308,54 @@ if (year) {
 }
 
 
-// NEWSLETTER FORM - FRONTEND DEMO
 
-const newsletterForm = document.querySelector("#newsletter-form");
 
-const newsletterMessage = document.querySelector("#newsletter-message");
-
-if (newsletterForm && newsletterMessage) {
-
-    newsletterForm.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-        const email = document
-            .querySelector("#newsletter-email")
-            .value.trim();
-
-        if (!email) return;
-
-        newsletterMessage.textContent =
-            "Thank you for subscribing! Connect this form to your mailing list to save addresses.";
-
-        newsletterForm.reset();
-
+// Refined navigation and subtle on-scroll motion.
+const refinedMenuToggle = document.querySelector(".menu-toggle");
+const refinedMainNav = document.querySelector("#main-nav");
+function closeMenu() {
+  if (!refinedMenuToggle || !refinedMainNav) return;
+  refinedMainNav.classList.remove("is-open");
+  refinedMenuToggle.setAttribute("aria-expanded", "false");
+  refinedMenuToggle.setAttribute("aria-label", "Open navigation");
+  document.body.classList.remove("menu-open");
+}
+if (refinedMenuToggle && refinedMainNav) {
+  refinedMenuToggle.addEventListener("click", () => {
+    const open = refinedMenuToggle.getAttribute("aria-expanded") !== "true";
+    refinedMenuToggle.setAttribute("aria-expanded", String(open));
+    refinedMenuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    refinedMainNav.classList.toggle("is-open", open);
+    document.body.classList.toggle("menu-open", open);
+  });
+  refinedMainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+  window.addEventListener("resize", () => { if (window.innerWidth > 980) closeMenu(); });
+}
+const revealItems = document.querySelectorAll(".hero-copy,.hero-visual,.feature-strip,.split-section,.testimonials,.newsletter,.site-footer");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if ("IntersectionObserver" in window && !reducedMotion) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add("is-visible"); obs.unobserve(entry.target); }
     });
-
+  }, { threshold: .12, rootMargin: "0px 0px -30px 0px" });
+  revealItems.forEach(item => { item.classList.add("reveal"); observer.observe(item); });
+} else {
+  revealItems.forEach(item => item.classList.add("is-visible"));
+}
+const navLinks = [...document.querySelectorAll(".main-nav a")];
+const navSections = navLinks.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+if ("IntersectionObserver" in window) {
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) navLinks.forEach(link => {
+        if (link.getAttribute("href") === "#" + entry.target.id) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    });
+  }, { rootMargin: "-35% 0px -55% 0px" });
+  navSections.forEach(section => navObserver.observe(section));
 }
 
 </script>
